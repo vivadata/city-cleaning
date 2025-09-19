@@ -1,0 +1,38 @@
+name: 'Deploy infra - dev'
+
+on:
+  push:
+    branches:
+      - main
+      - feat/infra-pipeline
+
+jobs:
+  terraform:
+    name: Terraform
+    runs-on: ubuntu-latest
+    environment: dev
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Set env
+        shell: bash
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
+          GCP_TF_JSON_BASE64: ${{ secrets.GCP_TF_JSON_BASE64 }}
+        run: |
+          echo $GCP_TF_JSON_BASE64 | base64 --decode > /tmp/cc-gcp-terraform.json
+
+      - name: Terraform Init & create workspace
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
+        run: |
+              cd iac/
+              terraform init
+              terraform workspace select -or-create dev
+              terraform plan -var-file=tfvars/variables.tfvars
+              terraform apply -var-file=tfvars/variables.tfvars -auto-approve
