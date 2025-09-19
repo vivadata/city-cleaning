@@ -38,7 +38,9 @@ jobs:
       - name: Terraform Plan
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
-        run: terraform plan -var-files=tfvars/variables.tfvars
+        run: terraform plan -var-file=tfvars/variables.tfvars
 
       # - name: Terraform apply
-      #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      #   env:
+      #     GOOGLE_APPLICATION_CREDENTIALS: ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
+      #   run: terraform apply -var-file=tfvars/variables.tfvars -auto-approve
