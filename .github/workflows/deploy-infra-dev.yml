@@ -22,10 +22,10 @@ jobs:
       - name: Set env
         shell: bash
         env:
-          GCP_TERRAFORM_JSON: ${{ secrets.GCP_TERRAFORM_JSON }}
+          GCP_TF_JSON_BASE64: ${{ secrets.GCP_TF_JSON_BASE64 }}
           GOOGLE_APPLICATION_CREDENTIALS: ${{ env.GOOGLE_APPLICATION_CREDENTIALS }}
         run: |
-          cat $GCP_TERRAFORM_JSON >> /tmp/cc-gcp-terraform.json
+          '$GCP_TF_JSON_BASE64' | base64 --decode | jq > /tmp/cc-gcp-terraform.json
 
       - name: Terraform Init & create workspace
         run: |
