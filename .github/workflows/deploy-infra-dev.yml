@@ -28,12 +28,16 @@ jobs:
           echo $GCP_TF_JSON_BASE64 | base64 --decode > /tmp/cc-gcp-terraform.json
 
       - name: Terraform Init & create workspace
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
         run: |
               cd iac/
               terraform init
               terraform workspace new dev
 
       - name: Terraform Plan
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
         run: terraform plan -var-files=tfvars/variables.tfvars
 
       # - name: Terraform apply
