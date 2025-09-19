@@ -25,7 +25,7 @@ jobs:
           GCP_TF_JSON_BASE64: ${{ secrets.GCP_TF_JSON_BASE64 }}
           GOOGLE_APPLICATION_CREDENTIALS: ${{ env.GOOGLE_APPLICATION_CREDENTIALS }}
         run: |
-          '$GCP_TF_JSON_BASE64' | base64 --decode | jq > /tmp/cc-gcp-terraform.json
+          echo '$GCP_TF_JSON_BASE64' | base64 --decode | jq > /tmp/cc-gcp-terraform.json
 
       - name: Terraform Init & create workspace
         run: |
