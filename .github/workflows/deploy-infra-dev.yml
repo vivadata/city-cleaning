@@ -34,13 +34,5 @@ jobs:
               cd iac/
               terraform init
               terraform workspace select -or-create dev
-
-      - name: Terraform Plan
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
-        run: terraform plan -var-file=tfvars/variables.tfvars
-
-      # - name: Terraform apply
-      #   env:
-      #     GOOGLE_APPLICATION_CREDENTIALS: ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
-      #   run: terraform apply -var-file=tfvars/variables.tfvars -auto-approve
+              terraform plan -var-file=tfvars/variables.tfvars
+      #       terraform apply -var-file=tfvars/variables.tfvars -auto-approve
