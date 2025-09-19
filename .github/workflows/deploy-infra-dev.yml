@@ -33,7 +33,7 @@ jobs:
         run: |
               cd iac/
               terraform init
-              terraform workspace new dev
+              terraform workspace select -or-create dev
 
       - name: Terraform Plan
         env:
