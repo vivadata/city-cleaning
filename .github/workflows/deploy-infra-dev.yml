@@ -35,4 +35,4 @@ jobs:
               terraform init
               terraform workspace select -or-create dev
               terraform plan -var-file=tfvars/variables.tfvars
-      #       terraform apply -var-file=tfvars/variables.tfvars -auto-approve
+              terraform apply -var-file=tfvars/variables.tfvars -auto-approve
