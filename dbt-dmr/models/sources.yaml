@@ -1,0 +1,84 @@
+version: 2
+
+sources:
+  - name: city_cleaning
+    database: rue-de-paris-472314
+    schema: datasets
+    tables:
+      - name: dmr
+        description: "Données fournies par l'application Dans ma rue"
+        columns:
+          - name: ID DECLARATION
+            description: "Id de la déclaration"
+          - name: TYPE DECLARATION
+            description: "Type de l'anomalie"
+          - name: SOUS TYPE DECLARATION
+            description: "Sous type de l'anomalie"
+          - name: ADRESSE
+            description: "Adresse de l'anomalie"
+          - name: CODE POSTAL
+            description: "Code postal"
+          - name: VILLE
+            description: "Ville"
+          - name: ARRONDISSEMENT
+            description: "ARRONDISSEMENT"
+          - name: CONSEIL DE QUARTIER
+            description: "Conseil de quartier concerné par l'anomalie"
+          - name: DATE DECLARATION
+            description: "Date de la déclaration"
+          - name: ANNEE DECLARATION
+            description: "Année de la déclaration"
+          - name: MOIS DECLARATION
+            description: "Mois de la déclaration"
+          - name: OUTIL SOURCE
+            description: "Appareil déclarant l'anomalie"
+          - name: INTERVENANT
+            description: "Pôle de la mairie concerné"
+          - name: ID_DMR
+            description: "Id de l'utilisateur"
+          - name: geo_shape
+            description: "Coordonnées en format JSON de l'anomalie"
+          - name: geo_point_2d
+            description: "Coordonées de l'anomalie"
+          - name: mois_annee_decla
+            description: "Mois et annee de la déclaration"
+
+      - name: colonne_verre
+        description: "Poubelle pour les déchets de verre"
+        columns:
+          - name: Arrondissement de l'emplacement
+            description: "Code postal"
+          - name: geo_point_2d
+            description: "Coordonnées de la poubelle"
+      
+      - name: composteur
+        description: "Poubelle pour le composte"
+        columns:
+          - name: Arrondissement de l'emplacement
+            description: "Code postal"
+          - name: geo_point_2d
+            description: "Coordonnées de la poubelle"
+      
+      - name: recyclerie
+        description: "Poubelle pour les déchets ménagers recyclables"
+        columns:
+          - name: CODE_POSTAL
+            description: "Code postal"
+          - name: Coordonnées Géo
+            description: "Coordonnées de la poubelle"
+      
+      - name: textile
+        description: "Poubelle pour les déchets textiles"
+        columns:
+          - name: Code postal
+            description: "Code postal"
+          - name: Coordonnées Géo
+            description: "Coordonnées de la poubelle"
+      
+      - name: trilib
+        description: "Poubelle Trilib"
+        columns:
+          - name: Code postal
+            description: "Code postal"
+          - name: Coordonnees géographiques
+            description: "Coordonnées de la poubelle"
