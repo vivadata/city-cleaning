@@ -27,6 +27,6 @@ jobs:
 
       - name: Deploy
         run: |
-          gsutil -m rsync -R dbt-dmr/models/* gs://city-cleaning-airflow-dev/dags/models/
+          gsutil -m rsync -R dbt-dmr/models/ gs://city-cleaning-airflow-dev/dags/models/
 
 
