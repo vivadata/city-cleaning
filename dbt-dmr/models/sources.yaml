@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: city_cleaning
     database: rue-de-paris-472314
-    schema: datasets
+    schema: city_cleaning_dev
     tables:
       - name: dmr
         description: "Données fournies par l'application Dans ma rue"

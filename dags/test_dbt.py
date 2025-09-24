@@ -24,7 +24,7 @@ with DAG(
 
     dbt_task = BashOperator(
         task_id="test_dbt",
-        bash_command="dbt -h",
+        bash_command="dbt run",
     )
 
     greet_task >> dbt_task
