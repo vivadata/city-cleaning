@@ -1,4 +1,4 @@
-name: 'Deploy dbt models - dev'
+name: 'Deploy dbt files on bucket - dev'
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   dbt-models:
-    name: Dbt-models
+    name: Dbt - profile and models
     runs-on: ubuntu-latest
     environment: dev
 
@@ -26,7 +26,12 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v3'
 
       - name: Deploy
+        env:
+          DBT_PROFILE: ${{ secrets.DBT_PROFILE}}
         run: |
+          echo $DBT_PROFILE > profiles.yml
+          cat profiles.yml
+          gsutil -m rsync -R dbt-dmr/dbt_project.yml gs://city-cleaning-airflow-dev/dags/
           gsutil -m rsync -R dbt-dmr/models/ gs://city-cleaning-airflow-dev/dags/models/
 
 
