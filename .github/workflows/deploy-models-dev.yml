@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - feat/dags-sync
-    paths:
-      - "dbt-dmr/models/**"
+    # paths:
+      # - "dbt-dmr/models/**"
 
 jobs:
   dbt-models:
