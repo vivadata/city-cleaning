@@ -9,7 +9,7 @@ from airflow.operators.bash import BashOperator
 # Run on Cloud Run Jobs.
 #
 with DAG(
-    dag_id="first_demo_dag",
+    dag_id="test_dbt",
     start_date=datetime(2025, 1, 1),
     schedule="@daily",
     catchup=False,
