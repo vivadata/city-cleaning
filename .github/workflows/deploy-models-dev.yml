@@ -1,0 +1,42 @@
+name: 'Deploy dbt models - dev'
+
+on:
+  push:
+    branches:
+      - feat/dags-sync
+    paths:
+      - "dbt-dmr/models/**"
+
+jobs:
+  dbt-models:
+    name: Dbt-models
+    runs-on: ubuntu-latest
+    environment: dev
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set env
+        shell: bash
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
+          GCP_TF_JSON_BASE64: ${{ secrets.GCP_TF_JSON_BASE64 }}
+        run: |
+          echo $GCP_TF_JSON_BASE64 | base64 --decode >  ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
+
+      - name: Auth
+        uses: 'google-github-actions/auth@v3'
+        with:
+          credentials_json: ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v3'
+
+      - name: Deploy
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
+        run: |-
+          gsutil -m rsync -R dbt-dmr/models/* gs://city-cleaning-airflow-dev/dags/models/
+
+
