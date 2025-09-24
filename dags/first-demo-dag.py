@@ -1,5 +1,8 @@
 from airflow import DAG
 from datetime import datetime, timedelta
+from airflow.operators.python import PythonOperator
+from airflow.operators.bash import BashOperator
+
 
 default_args = {
     "owner": "Aloys",
@@ -16,15 +19,17 @@ with DAG(
     tags=["bootcamp-de"],
 ) as dag_basics:
 
-    @task()
-    def greet():
-        print("👋 Hello from my first task!")
+    def legacy_fn():
+        print("hello from legacy")
 
-    greet_task = greet()
+    legacy = PythonOperator(
+        task_id="legacy",
+        python_callable=legacy_fn,
+    )
 
     date_task = BashOperator(
         task_id="show_date",
         bash_command="date",
     )
 
-    greet_task >> date_task
+    legacy >> date_task
