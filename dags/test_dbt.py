@@ -1,43 +1,29 @@
-import datetime
+from datetime import datetime, timedelta
 
-from dag_utils.tools import DBTComposerJobOperator
-from airflow.models import Param
-from airflow.decorators import dag
+from airflow.decorators import DAG, task
+from airflow.operators.bash import BashOperator
 
 
 #
 # Run on Cloud Run Jobs.
 #
-@dag(
-    schedule_interval=None,
+with DAG(
+    dag_id="first_demo_dag",
+    start_date=datetime(2025, 1, 1),
+    schedule="@daily",
     catchup=False,
-    start_date=datetime.datetime(2022, 1, 1),
-    params={
-        'job_name': Param(
-            default='example-dbt-run-job',
-            type='string',
-        ),
-    },
-)
-def example_dbt_run_dag():
+    tags=["bootcamp-de-dbt"],
+) as dag_basics:
 
-    # Launch the job, optionally parameterising it from different
-    # job names.
-    DBTComposerJobOperator(
-        task_id='example_dbt_run_job',
-        job_name='{{ params.job_name }}',
-        capture_docs=True,
-        cmds=[
-            "/bin/bash",
-            "-xc",
-            "&&".join([
-                "dbt -h"
-            ]),
-        ],
-        dbt_vars={
-            "reporting_day": "{{ ds }}",
-        },
+    @task()
+    def greet():
+        print("👋 Hello from my first task!")
+
+    greet_task = greet()
+
+    dbt_task = BashOperator(
+        task_id="test_dbt",
+        bash_command="dbt -h",
     )
 
-
-example_dbt_run_dag()
+    greet_task >> dbt_task
