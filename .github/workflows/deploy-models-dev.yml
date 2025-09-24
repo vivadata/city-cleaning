@@ -22,13 +22,11 @@ jobs:
         with:
           credentials_json: ${{ secrets.GOOGLE_CREDENTIALS}}
 
-      # - name: 'Set up Cloud SDK'
-      #   uses: 'google-github-actions/setup-gcloud@v3'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v3'
 
-      # - name: Deploy
-      #   env:
-      #     GOOGLE_APPLICATION_CREDENTIALS: ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
-      #   run: |-
-      #     gsutil -m rsync -R dbt-dmr/models/* gs://city-cleaning-airflow-dev/dags/models/
+      - name: Deploy
+        run: |
+          gsutil -m rsync -R dbt-dmr/models/* gs://city-cleaning-airflow-dev/dags/models/
 
 
