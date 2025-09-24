@@ -25,13 +25,6 @@ jobs:
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v3'
 
-      - name: Create profiles file for dbt
-        env:
-          DBT_PROFILE: ${{ secrets.DBT_PROFILE}}
-        run: |
-          echo $DBT_PROFILE > profiles.yml
-          cat profiles.yml
-
       - name: Deploy
         run: |
           gsutil -m rsync -R dbt-dmr/dbt_project.yml gs://city-cleaning-airflow-dev/dags/
