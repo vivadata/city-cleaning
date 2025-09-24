@@ -27,9 +27,9 @@ jobs:
 
       - name: Deploy
         run: |
-          mkdir tmp
-          cp dbt-dmr/dbt_project.yml tmp 
-          gsutil -m rsync -R tmp/ gs://city-cleaning-airflow-dev/dags/
+          mkdir -p tmp/dags tmp/data
+          cp dbt-dmr/dbt_project.yml tmp/dags/
+          gsutil -m rsync -R tmp/dags/ gs://city-cleaning-airflow-dev/dags/
           gsutil -m rsync -R dbt-dmr/models/ gs://city-cleaning-airflow-dev/dags/models/
 
 
