@@ -16,7 +16,7 @@ DESTINATION_PROJECT_DATASET = "city_cleaning_dev"
 with DAG(
     dag_id="dag_dmr",
     start_date=datetime(2025, 1, 1),
-    schedule="@daily",
+    schedule="* 1 * * *",
     catchup=False,
     tags=["city-cleaning"],
 ) as dag_dmr:
@@ -49,6 +49,4 @@ with DAG(
         bash_command="dbt build --select stg_anomalie",
     )
 
-   # [transform_to_bq_dmr, transform_to_bq_clvr, transform_to_bq_cpst, transform_to_bq_txtl, transform_to_bq_rclr, transform_to_bq_trlb] >> dbt_task
     download_datasets_dmr >> upload_to_gcs_dmr >> transform_to_bq_dmr >> dbt_task_dmr
-    # transform_to_bq_dmr >> transform_to_bq_clvr >> transform_to_bq_cpst >> transform_to_bq_txtl >> transform_to_bq_rclr >> transform_to_bq_trlb >> dbt_task
