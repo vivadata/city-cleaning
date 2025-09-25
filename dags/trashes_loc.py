@@ -178,8 +178,4 @@ with DAG(
         bash_command="dbt build --select stg_trilib",
     )
 
-    download_datasets_clvr >> upload_to_gcs_clvr >> transform_to_bq_clvr >> dbt_task_clvr
-    download_datasets_cpst >> upload_to_gcs_cpst >> transform_to_bq_cpst >> dbt_task_cpst
-    download_datasets_txtl >> upload_to_gcs_txtl >> transform_to_bq_txtl >> dbt_task_txtl
-    download_datasets_rclr >> upload_to_gcs_rclr >> transform_to_bq_rclr >> dbt_task_rclr
-    download_datasets_trlb >> upload_to_gcs_trlb >> transform_to_bq_trlb >> dbt_task_trlb
+    download_datasets_clvr >> upload_to_gcs_clvr >> transform_to_bq_clvr >> dbt_task_clvr >> download_datasets_cpst >> upload_to_gcs_cpst >> transform_to_bq_cpst >> dbt_task_cpst >> download_datasets_txtl >> upload_to_gcs_txtl >> transform_to_bq_txtl >> dbt_task_txtl >> download_datasets_rclr >> upload_to_gcs_rclr >> transform_to_bq_rclr >> dbt_task_rclr >> download_datasets_trlb >> upload_to_gcs_trlb >> transform_to_bq_trlb >> dbt_task_trlb
