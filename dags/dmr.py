@@ -24,7 +24,7 @@ with DAG(
     download_datasets_dmr = BashOperator(
         task_id="download_datasets_dmr",
         bash_command="""
-            curl -X 'GET' 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=true&limit=20' -H 'accept: */*' > /tmp/dans-ma-rue.csv
+            curl -X 'GET' 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=true' -H 'accept: */*' > /tmp/dans-ma-rue.csv
         """,
     )
     
@@ -46,7 +46,20 @@ with DAG(
 
     dbt_task_dmr = BashOperator(
         task_id="dbt_task_dmr",
-        bash_command="dbt build --select stg_anomalie",
+        bash_command="""
+            dbt build --select stg_anomalie &&
+            dbt build --select activite &&
+            dbt build --select arbre &&
+            dbt build --select auto &&
+            dbt build --select degradation &&
+            dbt build --select eau &&
+            dbt build --select eclairage &&
+            dbt build --select graffiti &&
+            dbt build --select mobilier_urbain &&
+            dbt build --select objet_abandonne &&
+            dbt build --select proprete &&
+            dbt build --select voirie
+        """,
     )
 
     download_datasets_dmr >> upload_to_gcs_dmr >> transform_to_bq_dmr >> dbt_task_dmr

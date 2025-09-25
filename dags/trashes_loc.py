@@ -28,7 +28,7 @@ with DAG(
     download_datasets_clvr = BashOperator(
         task_id="download_datasets_clvr",
         bash_command="""
-            curl -X 'GET' 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dechets-menagers-points-dapport-volontaire-colonnes-a-verre/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=true&limit=20' -H 'accept: */*' > /tmp/colonnes-a-verre.csv
+            curl -X 'GET' 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dechets-menagers-points-dapport-volontaire-colonnes-a-verre/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=true' -H 'accept: */*' > /tmp/colonnes-a-verre.csv
         """,
     )
     
@@ -82,7 +82,7 @@ with DAG(
 
     dbt_task_cpst = BashOperator(
         task_id="dbt_task_cpst",
-        bash_command="dbt build --select dbt_task_cpst",
+        bash_command="dbt build --select stg_composteur",
     )
 
     #
@@ -91,7 +91,7 @@ with DAG(
     download_datasets_txtl = BashOperator(
         task_id="download_datasets_txtl",
         bash_command="""
-            curl -X 'GET' 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dechets-menagers-points-dapport-volontaire-conteneur-textile/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=true&limit=20' -H 'accept: */*' > /tmp/textile.csv
+            curl -X 'GET' 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dechets-menagers-points-dapport-volontaire-conteneur-textile/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=true' -H 'accept: */*' > /tmp/textile.csv
         """,
     )
     
@@ -122,7 +122,7 @@ with DAG(
     download_datasets_rclr = BashOperator(
         task_id="download_datasets_rclr",
         bash_command="""
-            curl -X 'GET' 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dechets-menagers-points-dapport-volontaire-recycleries-et-ressourceries/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=true&limit=20' -H 'accept: */*' > /tmp/recyclerie.csv
+            curl -X 'GET' 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dechets-menagers-points-dapport-volontaire-recycleries-et-ressourceries/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=true' -H 'accept: */*' > /tmp/recyclerie.csv
         """,
     )
     
@@ -153,7 +153,7 @@ with DAG(
     download_datasets_trlb = BashOperator(
         task_id="download_datasets_trlb",
         bash_command="""
-            curl -X 'GET' 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dechets-menagers-points-dapport-volontaire-stations-trilib/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=true&limit=20' -H 'accept: */*' > /tmp/trilib.csv
+            curl -X 'GET' 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dechets-menagers-points-dapport-volontaire-stations-trilib/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=true' -H 'accept: */*' > /tmp/trilib.csv
         """,
     )
     
@@ -176,6 +176,11 @@ with DAG(
     dbt_task_trlb = BashOperator(
         task_id="dbt_task_trlb",
         bash_command="dbt build --select stg_trilib",
+    )
+    
+    dbt_task_build_mart = BashOperator(
+        task_id="dbt_task_build_mart",
+        bash_command="dbt build --select poubelle",
     )
 
     download_datasets_clvr >> upload_to_gcs_clvr >> transform_to_bq_clvr >> dbt_task_clvr >> download_datasets_cpst >> upload_to_gcs_cpst >> transform_to_bq_cpst >> dbt_task_cpst >> download_datasets_txtl >> upload_to_gcs_txtl >> transform_to_bq_txtl >> dbt_task_txtl >> download_datasets_rclr >> upload_to_gcs_rclr >> transform_to_bq_rclr >> dbt_task_rclr >> download_datasets_trlb >> upload_to_gcs_trlb >> transform_to_bq_trlb >> dbt_task_trlb
