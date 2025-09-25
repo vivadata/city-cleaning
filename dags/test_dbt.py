@@ -91,7 +91,7 @@ with DAG(
 
     dbt_task = BashOperator(
         task_id="test_dbt",
-        bash_command="dbt run",
+        bash_command="dbt build --select stg_anomalie",
     )
 
    # [transform_to_bq_dmr, transform_to_bq_clvr, transform_to_bq_cpst, transform_to_bq_txtl, transform_to_bq_rclr, transform_to_bq_trlb] >> dbt_task
