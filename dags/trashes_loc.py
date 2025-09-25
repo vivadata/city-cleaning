@@ -57,17 +57,17 @@ with DAG(
     # COMPOSTEUR
     #
 
-    download_datasets_clvr = BashOperator(
-        task_id="download_datasets_clvr",
+    download_datasets_cpst = BashOperator(
+        task_id="download_datasets_cpst",
         bash_command="""
             curl -X 'GET' 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dechets-menagers-points-dapport-volontaire-composteurs/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=true' -H 'accept: */*' > /tmp/composteur.csv
         """,
     )
     
-    upload_to_gcs_clvr = LocalFilesystemToGCSOperator(
-        task_id="upload_to_gcs_clvr",
-        src="/tmp/colonnes-a-verre.csv",
-        dst="colonnes-a-verre.csv",
+    upload_to_gcs_cpst = LocalFilesystemToGCSOperator(
+        task_id="upload_to_gcs_cpst",
+        src="/tmp/composteur.csv",
+        dst="composteur.csv",
         bucket=BUCKET_NAME,
     )
     
@@ -75,7 +75,7 @@ with DAG(
         task_id="transform_to_bq_cpst",
         destination_project_dataset_table=f"{DESTINATION_PROJECT_DATASET}.composteur",
         bucket=BUCKET_NAME,
-        source_objects="dechets-menagers-points-dapport-volontaire-composteurs.csv",
+        source_objects="composteur.csv",
         write_disposition='WRITE_TRUNCATE',
         field_delimiter=";"
     )
@@ -179,3 +179,7 @@ with DAG(
     )
 
     download_datasets_clvr >> upload_to_gcs_clvr >> transform_to_bq_clvr >> dbt_task_clvr
+    download_datasets_cpst >> upload_to_gcs_cpst >> transform_to_bq_cpst >> dbt_task_cpst
+    download_datasets_txtl >> upload_to_gcs_txtl >> transform_to_bq_txtl >> dbt_task_txtl
+    download_datasets_rclr >> upload_to_gcs_rclr >> transform_to_bq_rclr >> dbt_task_rclr
+    download_datasets_trlb >> upload_to_gcs_trlb >> transform_to_bq_trlb >> dbt_task_trlb
