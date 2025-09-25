@@ -14,12 +14,12 @@ DESTINATION_PROJECT_DATASET = "city_cleaning_dev"
 # Run on Cloud Run Jobs.
 #
 with DAG(
-    dag_id="dag_dmr",
+    dag_id="dag_colonne_verre",
     start_date=datetime(2025, 1, 1),
     schedule="@daily",
     catchup=False,
     tags=["city-cleaning"],
-) as dag_dmr:
+) as dag_colonne_verre:
 
     download_datasets_clvr = BashOperator(
         task_id="download_datasets_clvr",
