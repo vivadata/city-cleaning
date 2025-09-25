@@ -174,7 +174,7 @@ with DAG(
     )
 
     dbt_task_trlb = BashOperator(
-        task_id="dbt_task_clvr",
+        task_id="dbt_task_trlb",
         bash_command="dbt build --select stg_trilib",
     )
 
