@@ -1,5 +1,5 @@
 SELECT
-    modele AS id,
+    numero AS id,
     type AS type_declaration,
     soustype AS sous_type_declaration ,
     code_postal AS code_postal,
