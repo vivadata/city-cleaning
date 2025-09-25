@@ -24,13 +24,13 @@ with DAG(
     download_datasets = BashOperator(
         task_id="download_datasets",
         bash_command="""
-            curl -X 'GET' 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=true&limit=20' -H 'accept: */*' > dans-ma-rue.csv
+            curl -X 'GET' 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=true&limit=20' -H 'accept: */*' > /tmp/dans-ma-rue.csv
         """,
     )
     
     upload_to_gcs_dmr = LocalFilesystemToGCSOperator(
         task_id="upload_to_gcs_dmr",
-        src="dans-ma-rue.csv",
+        src="/tmp/dans-ma-rue.csv",
         dst="dans-ma-rue.csv",
         bucket=BUCKET_NAME,
     )
