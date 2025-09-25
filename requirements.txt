@@ -1,0 +1,7 @@
+fastapi[standard]
+openaq
+requests
+pandas
+google-cloud
+dbt
+uvicorn[standard]
