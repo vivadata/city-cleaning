@@ -8,33 +8,33 @@ sources:
       - name: dmr
         description: "Données fournies par l'application Dans ma rue"
         columns:
-          - name: ID DECLARATION
+          - name: numero
             description: "Id de la déclaration"
-          - name: TYPE DECLARATION
+          - name: type
             description: "Type de l'anomalie"
-          - name: SOUS TYPE DECLARATION
+          - name: soustype
             description: "Sous type de l'anomalie"
-          - name: ADRESSE
+          - name: adresse
             description: "Adresse de l'anomalie"
-          - name: CODE POSTAL
+          - name: code_postal
             description: "Code postal"
-          - name: VILLE
+          - name: ville
             description: "Ville"
-          - name: ARRONDISSEMENT
+          - name: arrondissement
             description: "ARRONDISSEMENT"
-          - name: CONSEIL DE QUARTIER
+          - name: conseilquartier
             description: "Conseil de quartier concerné par l'anomalie"
-          - name: DATE DECLARATION
+          - name: datedecl
             description: "Date de la déclaration"
-          - name: ANNEE DECLARATION
+          - name: anneedecl
             description: "Année de la déclaration"
-          - name: MOIS DECLARATION
+          - name: moisdecl
             description: "Mois de la déclaration"
-          - name: OUTIL SOURCE
+          - name: prefixe
             description: "Appareil déclarant l'anomalie"
-          - name: INTERVENANT
+          - name: intervenant
             description: "Pôle de la mairie concerné"
-          - name: ID_DMR
+          - name: id_dmr
             description: "Id de l'utilisateur"
           - name: geo_shape
             description: "Coordonnées en format JSON de l'anomalie"
@@ -46,7 +46,7 @@ sources:
       - name: colonne_verre
         description: "Poubelle pour les déchets de verre"
         columns:
-          - name: Arrondissement de l'emplacement
+          - name: arrdt
             description: "Code postal"
           - name: geo_point_2d
             description: "Coordonnées de la poubelle"
@@ -54,7 +54,7 @@ sources:
       - name: composteur
         description: "Poubelle pour le composte"
         columns:
-          - name: Arrondissement de l'emplacement
+          - name: arrdt
             description: "Code postal"
           - name: geo_point_2d
             description: "Coordonnées de la poubelle"
@@ -62,23 +62,23 @@ sources:
       - name: recyclerie
         description: "Poubelle pour les déchets ménagers recyclables"
         columns:
-          - name: CODE_POSTAL
+          - name: code_postal
             description: "Code postal"
-          - name: Coordonnées Géo
+          - name: coordonnees_geo
             description: "Coordonnées de la poubelle"
       
       - name: textile
         description: "Poubelle pour les déchets textiles"
         columns:
-          - name: Code postal
+          - name: code_postal
             description: "Code postal"
-          - name: Coordonnées Géo
+          - name: coordonnees_geo
             description: "Coordonnées de la poubelle"
       
       - name: trilib
         description: "Poubelle Trilib"
         columns:
-          - name: Code postal
+          - name: code_postal
             description: "Code postal"
-          - name: Coordonnees géographiques
+          - name: coordonnees_geo_wgs84
             description: "Coordonnées de la poubelle"
