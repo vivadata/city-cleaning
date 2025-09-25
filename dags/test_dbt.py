@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta
 
 from airflow import DAG
-from airflow.decorators import task
 from airflow.operators.bash import BashOperator
 from airflow.providers.google.cloud.transfers.local_to_gcs import LocalFilesystemToGCSOperator
 from airflow.providers.google.cloud.transfers.gcs_to_bigquery import GCSToBigQueryOperator
@@ -19,8 +18,22 @@ with DAG(
     start_date=datetime(2025, 1, 1),
     schedule="@daily",
     catchup=False,
-    tags=["bootcamp-de-dbt"],
+    tags=["city-cleaning"],
 ) as dag_basics:
+
+    download_datasets = BashOperator(
+        task_id="test_dbt",
+        bash_command="""
+            curl -X 'GET' 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=true&limit=20' -H 'accept: */*' > dans-ma-rue.csv
+        """,
+    )
+    
+    upload_to_gcs_dmr = LocalFilesystemToGCSOperator(
+        task_id="upload_to_gcs_dmr",
+        src="dans-ma-rue.csv",
+        dst="dans-ma-rue.csv",
+        bucket=BUCKET_NAME,
+    )
 
     transform_to_bq_dmr = GCSToBigQueryOperator(
         task_id="transform_to_bq_dmr",
@@ -82,4 +95,6 @@ with DAG(
     )
 
    # [transform_to_bq_dmr, transform_to_bq_clvr, transform_to_bq_cpst, transform_to_bq_txtl, transform_to_bq_rclr, transform_to_bq_trlb] >> dbt_task
-    transform_to_bq_dmr >> transform_to_bq_clvr >> transform_to_bq_cpst >> transform_to_bq_txtl >> transform_to_bq_rclr >> transform_to_bq_trlb >> dbt_task
+    download_datasets >> []
+    # transform_to_bq_dmr >> transform_to_bq_clvr >> transform_to_bq_cpst >> transform_to_bq_txtl >> transform_to_bq_rclr >> transform_to_bq_trlb >> dbt_task
+    transform_to_bq_dmr >> dbt_task
