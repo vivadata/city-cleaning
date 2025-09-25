@@ -6,7 +6,7 @@ from airflow.providers.google.cloud.transfers.local_to_gcs import LocalFilesyste
 from airflow.providers.google.cloud.transfers.gcs_to_bigquery import GCSToBigQueryOperator
 
 #BUCKET_NAME = "cc-datasets-storage-dev"
-BUCKET_NAME = "dans-ma-rue"
+BUCKET_NAME = "cc-datasets-storage-dev"
 PROJECT_ID = "rue-de-paris-472314"
 DESTINATION_PROJECT_DATASET = "city_cleaning_dev"
 
@@ -95,6 +95,5 @@ with DAG(
     )
 
    # [transform_to_bq_dmr, transform_to_bq_clvr, transform_to_bq_cpst, transform_to_bq_txtl, transform_to_bq_rclr, transform_to_bq_trlb] >> dbt_task
-    download_datasets >> upload_to_gcs_dmr
+    download_datasets >> upload_to_gcs_dmr >> transform_to_bq_dmr >> dbt_task
     # transform_to_bq_dmr >> transform_to_bq_clvr >> transform_to_bq_cpst >> transform_to_bq_txtl >> transform_to_bq_rclr >> transform_to_bq_trlb >> dbt_task
-    transform_to_bq_dmr >> dbt_task
