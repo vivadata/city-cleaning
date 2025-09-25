@@ -22,7 +22,7 @@ with DAG(
 ) as dag_basics:
 
     download_datasets = BashOperator(
-        task_id="test_dbt",
+        task_id="download_datasets",
         bash_command="""
             curl -X 'GET' 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=true&limit=20' -H 'accept: */*' > dans-ma-rue.csv
         """,
@@ -95,6 +95,6 @@ with DAG(
     )
 
    # [transform_to_bq_dmr, transform_to_bq_clvr, transform_to_bq_cpst, transform_to_bq_txtl, transform_to_bq_rclr, transform_to_bq_trlb] >> dbt_task
-    download_datasets >> []
+    download_datasets >> [upload_to_gcs_dmr]
     # transform_to_bq_dmr >> transform_to_bq_clvr >> transform_to_bq_cpst >> transform_to_bq_txtl >> transform_to_bq_rclr >> transform_to_bq_trlb >> dbt_task
     transform_to_bq_dmr >> dbt_task
