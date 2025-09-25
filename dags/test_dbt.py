@@ -81,4 +81,5 @@ with DAG(
         bash_command="dbt run",
     )
 
-    [transform_to_bq_dmr, transform_to_bq_clvr, transform_to_bq_cpst, transform_to_bq_txtl, transform_to_bq_rclr, transform_to_bq_trlb] >> dbt_task
+   # [transform_to_bq_dmr, transform_to_bq_clvr, transform_to_bq_cpst, transform_to_bq_txtl, transform_to_bq_rclr, transform_to_bq_trlb] >> dbt_task
+    transform_to_bq_dmr >> transform_to_bq_clvr >> transform_to_bq_cpst >> transform_to_bq_txtl >> transform_to_bq_rclr >> transform_to_bq_trlb >> dbt_task
