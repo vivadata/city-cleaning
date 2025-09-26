@@ -16,7 +16,7 @@ DESTINATION_PROJECT_DATASET = "city_cleaning_dev"
 with DAG(
     dag_id="dag_dmr",
     start_date=datetime(2025, 1, 1),
-    schedule="* 1 * * *",
+    schedule="0 1 * * *",
     catchup=False,
     tags=["city-cleaning"],
 ) as dag_dmr:

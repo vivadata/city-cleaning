@@ -3,6 +3,7 @@ name: 'Deploy dbt files on bucket - dev'
 on:
   push:
     branches:
+      - main
       - feat/dags-sync
     # paths:
       # - "dbt-dmr/models/**"
