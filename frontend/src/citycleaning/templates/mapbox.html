@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Collection Routes</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+        <link href="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+        <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
+        <script src="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.js"></script>
+        
+        <script src="{{ url_for('static', filename='mapbox/constants.js') }}"></script>
+        <script src="{{ url_for('static', filename='mapbox/input.js') }}"></script>
+        <script src="{{ url_for('static', filename='mapbox/locations.js') }}"></script>
+        <script src="{{ url_for('static', filename='mapbox/services.js') }}"></script>
+        <script src="{{ url_for('static', filename='mapbox/shipments.js') }}"></script>
+        <script src="{{ url_for('static', filename='mapbox/vehicles.js') }}"></script>
+        <script src="{{ url_for('static', filename='mapbox/routing.js') }}"></script>
+        <script src="{{ url_for('static', filename='mapbox/output.js') }}"></script>
+        <style>
+            body { margin: 0; padding: 0; }
+            #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+            .loader {
+                position: relative;
+                width: 120px;
+                height: 120px;
+                left: calc(50% - 60px);
+                top: calc(50% - 60px);
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                animation: spin 2s linear infinite;
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map">
+            <div class="loader"></div>
+        </div>
+        <script>
+            /*
+             * Public access token, read only
+             * Must be associated to mapbox that way for the map
+             */
+            mapboxgl.accessToken = "{{mb_pk_default}}";
+
+            // Let's scramble our color map
+            let colorlines = _.shuffle(colors);
+
+            // Start the ball
+            create_map();
+
+            // Said ball
+            async function create_map(params) {
+                const dropoffs = await get_basics ();
+
+                const { routings, call_urls, trash_points } = await get_data (dropoffs);
+
+
+                // Create an instance of the map
+                const map = new mapboxgl.Map({
+                    container: "map",
+                    style: map_styles.standard, // Use the standard style for the 3d map
+                    projection: "globe", // display the map as a globe
+                    zoom: 11, // initial zoom level, 0 is the world view, higher values zoom in
+                    center: [2.349014, 48.864716] // center the map on this longitude and latitude
+                });
+
+                // restrict its controls
+                map.addControl(new mapboxgl.NavigationControl());
+                map.scrollZoom.disable();
+
+                // Define the actions on loading
+                map.on("style.load", async () => {
+                    map.setFog({}); // Set the default atmosphere style
+
+                    /*// Create a source for the trash dropoffs
+                    map.addSource(`dropoffs`, {
+                        type: "geojson",
+                        data: dropoffs,
+                    });
+
+                    // Create a circle layer for each point
+                    map.addLayer({
+                        id: `dropoff-circle`,
+                        type: "circle",
+                        source: `dropoffs`,
+                        paint: {
+                            "circle-radius": 2,
+                            "circle-color": "#000000",
+                            "circle-stroke-color": "#FFFFFF",
+                            "circle-stroke-width": 2,
+                        },
+                    });*/
+
+                    for (const idx in trash_points.v1) {
+                        // Create a source for the trash points
+                        map.addSource(`trash-${idx}`, {
+                            type: "geojson",
+                            data: trash_points.v1[idx],
+                        });
+
+                        // Create a circle layer for each point
+                        map.addLayer({
+                            id: `trash-circle-${idx}`,
+                            type: "circle",
+                            source: `trash-${idx}`,
+                            paint: {
+                                "circle-radius": 4,
+                                "circle-color": colorlines[idx],
+                                "circle-stroke-color": "#000000",
+                                "circle-stroke-width": 2,
+                            },
+                        });
+                    }
+
+                    // Make a route soft counter
+                    let routes = 0;
+
+                    // Make the calls
+                    for (const this_url in call_urls) {
+                        // V1 Calls are fully defined in the url, just call in get
+                        if (call_urls[this_url].includes("v1")) {
+                            const options = { method: "GET" };
+
+                            await fetch_route({
+                                map,
+                                url: call_urls[this_url], 
+                                options, 
+                                number: routes,
+                            });
+                            routes += 1;
+
+                        // V2 however are posts and must be more defined
+                        /*} else {
+                            for (this_json in routings.v2) {
+                                const options = {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                    body: new FormData().append("json", JSON.stringify(routings.v2[this_json])),
+                                };
+
+                                await fetch_route({
+                                    map,
+                                    url: call_urls[this_url], 
+                                    options, 
+                                    number: routes,
+                                });
+                                routes += 1;
+                            }*/
+                        }
+                    }
+                });
+            }
+
+            // Function to get all the dropoff points
+            async function get_basics () {
+                const data_query = await fetch("http://127.0.0.1:8080/dropoff/all", { method: "GET" });
+                const data_json = await data_query.json();
+                let output = [];
+
+                // Normalize all points
+                const clean_json = data_json
+                    .map(
+                        ({ longitude, latitude }) => 
+                            ({ 
+                                longitude: parseFloat(longitude).toFixed(6), 
+                                latitude: parseFloat(latitude).toFixed(6), 
+                            })
+                    );
+
+                // Then loop over themto remove duplicates
+                for (const idx in clean_json) {
+                    let { longitude, latitude } = clean_json[idx];
+
+                    const exists = output.find(
+                        coord => 
+                            coord.longitude == longitude &&
+                            coord.latitude == latitude 
+                    );
+
+                    if (typeof exists == "undefined") {
+                        output.push(clean_json[idx]);
+                    }
+                }
+
+                const collection = turf.featureCollection(output
+                    .map(
+                        ({ longitude, latitude }) => 
+                            turf.point(
+                                [
+                                    parseFloat(longitude).toFixed(6),
+                                    parseFloat(latitude).toFixed(6),
+                                ]
+                            )
+                    )
+                );
+
+                return collection;
+            }
+
+            // Function to get the latest pickup points
+            async function get_data (dropoffs) {
+                const data_query = await fetch("http://127.0.0.1:8080/pickup/latest", { method: "GET" });
+                const data_json = await data_query.json();
+
+                // Generate the routing for the pick ups
+                const routings = generate_routings(data_json)
+
+                //Create the calls from the routing data
+                const call_urls = generate_calls(routings, dropoffs, "{{mb_pk_default}}");
+
+                /*
+                * Create an array in which we'll send all our trash coordinates
+                * Use it to create a geojson to mark the points on the map
+                */
+                const trash_points = {
+                    v1: routings.v1.map(
+                        rtng => turf.featureCollection(
+                            rtng.locations.map(
+                                lctn => turf.point(lctn.locations)
+                            )
+                        )
+                    ),
+                    v2: routings.v2.map(
+                        rtng => turf.featureCollection(
+                            rtng.locations.map(
+                                lctn => turf.point(lctn.locations)
+                            )
+                        )
+                    ),
+                };
+
+                return { routings, call_urls, trash_points };
+            }
+
+            // Call optimization for one route
+            async function fetch_route(params) {
+                const { map, url, options, number } = params;
+
+                // Make the call
+                const query = await fetch(url, options);
+                const response = await query.json();
+
+                // Create a route from the response
+                const routeGeoJSON = turf.featureCollection([
+                    turf.feature(response.trips[0].geometry)
+                ]);
+
+                // Create a source for the route
+                map.addSource(`route-${number}`, {
+                    type: "geojson",
+                    data: turf.featureCollection([]),
+                });
+
+                // Add the route style to the source
+                map.addLayer(
+                    {
+                        id: `routeline-border-${number}`,
+                        type: "line",
+                        source: `route-${number}`,
+                        layout: {
+                            "line-join": "round",
+                            "line-cap": "round",
+                        },
+                        paint: {
+                            "line-color": "#000000",
+                            "line-width": ["interpolate", ["linear"], ["zoom"], 12, 4, 22, 12],
+                        },
+                    },
+                );
+
+                // Add the route style to the source
+                map.addLayer(
+                    {
+                        id: `routeline-active-${number}`,
+                        type: "line",
+                        source: `route-${number}`,
+                        layout: {
+                            "line-join": "round",
+                            "line-cap": "round",
+                        },
+                        paint: {
+                            "line-color": colorlines[number],
+                            "line-width": ["interpolate", ["linear"], ["zoom"], 12, 3, 22, 12],
+                        },
+                    },
+                );
+                
+                // Add the route itself to the source
+                map.getSource(`route-${number}`).setData(routeGeoJSON);
+            }
+        </script>
+    </body>
+</html>

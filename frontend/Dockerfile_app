@@ -1,0 +1,38 @@
+# From Python used in development
+FROM python:3.13-slim
+
+# For permissions set user
+USER root
+
+# Create same directory as development
+WORKDIR /city-cleaning
+
+# Then upgrade pip
+RUN pip install --upgrade pip
+
+# Then copy requirements
+COPY requirements_app.txt .
+
+# The install requirements
+RUN pip install -r requirements_app.txt
+
+# Then copy module config
+COPY pyproject.toml .
+
+# Then make a dir for the module
+RUN mkdir -p ./src/citycleaning
+
+# Then copy the module files
+COPY src/citycleaning/__init__.py ./src/citycleaning
+COPY src/citycleaning/app.py ./src/citycleaning
+COPY src/citycleaning/static ./src/citycleaning/static
+COPY src/citycleaning/templates ./src/citycleaning/templates
+
+# The install module
+RUN pip install -e .
+
+# Choose the port
+EXPOSE 8000
+
+# Run the command
+CMD ["python", "-m", "citycleaning.app"]

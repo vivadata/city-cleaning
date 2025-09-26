@@ -1,0 +1,1553 @@
+{
+  "total_count": 9,
+  "results": [
+    {
+      "visibility": "domain",
+      "dataset_id": "dans-ma-rue-historique-anomalies-signalees",
+      "dataset_uid": "da_dczd2t",
+      "has_records": false,
+      "features": [],
+      "attachments": [
+        {
+          "id": "dmr_2012_csv_zip",
+          "title": "DMR_2012.csv.zip",
+          "mimetype": "application/zip",
+          "url": "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue-historique-anomalies-signalees/attachments/dmr_2012_csv_zip"
+        },
+        {
+          "id": "dmr_2013_csv_zip",
+          "title": "DMR_2013.csv.zip",
+          "mimetype": "application/zip",
+          "url": "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue-historique-anomalies-signalees/attachments/dmr_2013_csv_zip"
+        },
+        {
+          "id": "dmr_2014_csv_zip",
+          "title": "DMR_2014.csv.zip",
+          "mimetype": "application/zip",
+          "url": "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue-historique-anomalies-signalees/attachments/dmr_2014_csv_zip"
+        },
+        {
+          "id": "dmr_2015_csv_zip",
+          "title": "DMR_2015.csv.zip",
+          "mimetype": "application/zip",
+          "url": "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue-historique-anomalies-signalees/attachments/dmr_2015_csv_zip"
+        },
+        {
+          "id": "dmr_2016_csv_zip",
+          "title": "DMR_2016.csv.zip",
+          "mimetype": "application/zip",
+          "url": "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue-historique-anomalies-signalees/attachments/dmr_2016_csv_zip"
+        },
+        {
+          "id": "dmr_2017_csv_zip",
+          "title": "DMR_2017.csv.zip",
+          "mimetype": "application/zip",
+          "url": "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue-historique-anomalies-signalees/attachments/dmr_2017_csv_zip"
+        },
+        {
+          "id": "dmr_2018_csv_zip",
+          "title": "DMR_2018.csv.zip",
+          "mimetype": "application/zip",
+          "url": "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue-historique-anomalies-signalees/attachments/dmr_2018_csv_zip"
+        },
+        {
+          "id": "dmr_2019_csv_zip",
+          "title": "DMR_2019.csv.zip",
+          "mimetype": "application/zip",
+          "url": "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue-historique-anomalies-signalees/attachments/dmr_2019_csv_zip"
+        },
+        {
+          "id": "dmr_2020_csv_zip",
+          "title": "DMR_2020.csv.zip",
+          "mimetype": "application/zip",
+          "url": "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue-historique-anomalies-signalees/attachments/dmr_2020_csv_zip"
+        },
+        {
+          "id": "dmr_2021_csv_zip",
+          "title": "DMR_2021.csv.zip",
+          "mimetype": "application/zip",
+          "url": "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue-historique-anomalies-signalees/attachments/dmr_2021_csv_zip"
+        },
+        {
+          "id": "dmr_2022_csv_zip",
+          "title": "DMR_2022.csv.zip",
+          "mimetype": "application/zip",
+          "url": "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue-historique-anomalies-signalees/attachments/dmr_2022_csv_zip"
+        },
+        {
+          "id": "dmr_2023_csv_zip",
+          "title": "DMR_2023.csv.zip",
+          "mimetype": "application/zip",
+          "url": "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue-historique-anomalies-signalees/attachments/dmr_2023_csv_zip"
+        },
+        {
+          "id": "dmr_2024_csv_zip",
+          "title": "DMR_2024.csv.zip",
+          "mimetype": "application/zip",
+          "url": "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/dans-ma-rue-historique-anomalies-signalees/attachments/dmr_2024_csv_zip"
+        }
+      ],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [],
+      "metas": {
+        "dcat": {
+          "created": "2021-07-07",
+          "issued": "2021-07-07",
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": "Annuelle",
+          "spatial": null,
+          "temporal": null,
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Dans Ma Rue - Historique - Anomalies signalées",
+          "description": "<p style='font-family: -apple-system, system-ui, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; font-size: 12.495px;'><span style=\"font-weight: bolder;\">Jeux de données historiques des anomalies signalées par les contributeurs-utilisateurs de l'application Dans Ma Rue.</span></p><p style='font-family: -apple-system, system-ui, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; font-size: 12.495px;'>Depuis 2012 la ville de Paris a lancé une application mobile de signalements des anomalies sur l'espace public appelée \" Dans Ma Rue\".</p><p style='font-family: -apple-system, system-ui, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; font-size: 12.495px;'>Plus d'informations <a href=\"https://www.paris.fr/pages/signaleurs-dans-ma-rue-agir-sur-l-espace-public-6682\" target=\"_blank\">Signaleurs « Dans ma rue » : agir sur l’espace public</a></p><p style='font-family: -apple-system, system-ui, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; font-size: 12.495px;'><b>Vous trouverez ici en pièce jointe un export CSV par année depuis 2012. </b></p><p style='font-family: -apple-system, system-ui, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; font-size: 12.495px;'>Le jeu de données de l'année précédente et en cours  à J-3 mois mis à jour quotidiennement est disponible ici : <a href=\"https://parisdata.opendatasoft.com/explore/dataset/dans-ma-rue/information/?disjunctive.type&amp;disjunctive.soustype&amp;disjunctive.code_postal&amp;disjunctive.arrondissement&amp;disjunctive.conseilquartier&amp;disjunctive.prefixe&amp;disjunctive.intervenant\" target=\"_blank\"><b>Dans Ma Rue - Anomalies signalées</b></a></p>",
+          "theme": [
+            "Equipements, Services, Social"
+          ],
+          "keyword": [
+            "propreté",
+            "signalement",
+            "graffiti",
+            "DMR",
+            "encombrants",
+            "Mobilier urbain",
+            "espace public",
+            "2 roues motorisés",
+            "vélo",
+            "Dans Ma Rue"
+          ],
+          "license": "Open Database License (ODbL)",
+          "license_url": "http://opendatacommons.org/licenses/odbl/",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2025-03-17T10:40:53+00:00",
+          "modified_updates_on_metadata_change": true,
+          "modified_updates_on_data_change": false,
+          "data_processed": null,
+          "metadata_processed": "2025-03-17T10:40:55.102000+00:00",
+          "geographic_reference": [
+            "fr_80_75056"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "Paris"
+          ],
+          "geometry_types": null,
+          "bbox": null,
+          "publisher": "Ville de Paris",
+          "references": null,
+          "records_count": 0,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": false,
+          "parent_domain": null,
+          "update_frequency": null
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "dans-ma-rue",
+      "dataset_uid": "da_y15c4s",
+      "has_records": true,
+      "features": [
+        "geo",
+        "analyze",
+        "timeserie"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "numero",
+          "description": null,
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "label": "ID DECLARATION",
+          "type": "int"
+        },
+        {
+          "name": "type",
+          "description": null,
+          "annotations": {
+            "facet": true,
+            "facetsort": "alphanum",
+            "disjunctive": true,
+            "sortable": true
+          },
+          "label": "TYPE DECLARATION",
+          "type": "text"
+        },
+        {
+          "name": "soustype",
+          "description": null,
+          "annotations": {
+            "facet": true,
+            "facetsort": "alphanum",
+            "disjunctive": true,
+            "sortable": true
+          },
+          "label": "SOUS TYPE DECLARATION",
+          "type": "text"
+        },
+        {
+          "name": "adresse",
+          "description": null,
+          "annotations": {},
+          "label": "ADRESSE",
+          "type": "text"
+        },
+        {
+          "name": "code_postal",
+          "description": null,
+          "annotations": {
+            "disjunctive": true,
+            "facet": true,
+            "sortable": true,
+            "facetsort": "alphanum"
+          },
+          "label": "CODE POSTAL",
+          "type": "text"
+        },
+        {
+          "name": "ville",
+          "description": null,
+          "annotations": {
+            "facetsort": "alphanum",
+            "disjunctive": true,
+            "sortable": true
+          },
+          "label": "VILLE",
+          "type": "text"
+        },
+        {
+          "name": "arrondissement",
+          "description": null,
+          "annotations": {
+            "facet": true,
+            "facetsort": "num",
+            "disjunctive": true
+          },
+          "label": "ARRONDISSEMENT",
+          "type": "int"
+        },
+        {
+          "name": "conseilquartier",
+          "description": null,
+          "annotations": {
+            "facet": true,
+            "facetsort": "alphanum",
+            "disjunctive": true,
+            "sortable": true
+          },
+          "label": "CONSEIL DE QUARTIER",
+          "type": "text"
+        },
+        {
+          "name": "datedecl",
+          "description": null,
+          "annotations": {
+            "timeserie_precision": "day",
+            "facet": true,
+            "timerangeFilter": true,
+            "facetsort": "-alphanum"
+          },
+          "label": "DATE DECLARATION",
+          "type": "date"
+        },
+        {
+          "name": "anneedecl",
+          "description": null,
+          "annotations": {
+            "facet": true,
+            "timeserie_precision": "year",
+            "facetsort": "-alphanum"
+          },
+          "label": "ANNEE DECLARATION",
+          "type": "date"
+        },
+        {
+          "name": "moisdecl",
+          "description": null,
+          "annotations": {
+            "facetsort": "-count",
+            "timeserie_precision": "day"
+          },
+          "label": "MOIS DECLARATION",
+          "type": "int"
+        },
+        {
+          "name": "prefixe",
+          "description": "A pour Iphone (Apple), G pour smartphone (Google), B pour Backoffice, S pour Paris.fr",
+          "annotations": {
+            "facet": true,
+            "facetsort": "alphanum",
+            "disjunctive": true,
+            "sortable": true
+          },
+          "label": "OUTIL SOURCE",
+          "type": "text"
+        },
+        {
+          "name": "intervenant",
+          "description": null,
+          "annotations": {
+            "facet": true,
+            "facetsort": "alphanum",
+            "disjunctive": true,
+            "sortable": true
+          },
+          "label": "INTERVENANT",
+          "type": "text"
+        },
+        {
+          "name": "id_dmr",
+          "description": null,
+          "annotations": {
+            "sortable": true
+          },
+          "label": "ID_DMR",
+          "type": "text"
+        },
+        {
+          "name": "geo_shape",
+          "description": null,
+          "annotations": {},
+          "label": "geo_shape",
+          "type": "geo_shape"
+        },
+        {
+          "name": "geo_point_2d",
+          "description": null,
+          "annotations": {},
+          "label": "geo_point_2d",
+          "type": "geo_point_2d"
+        },
+        {
+          "name": "mois_annee_decla",
+          "description": null,
+          "annotations": {
+            "facetsort": "-count",
+            "timeserie_precision": "month"
+          },
+          "label": "mois_annee_decla",
+          "type": "date"
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": null,
+          "issued": null,
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": "Quotidienne",
+          "spatial": null,
+          "temporal": null,
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Dans Ma Rue - Anomalies signalées",
+          "description": "<p><b>Anomalies signalées par les contributeurs-utilisateurs de l'application Dans Ma Rue sur 13 mois glissants</b></p><p>Depuis 2012 la ville de Paris a lancé une application mobile de signalements des anomalies sur l'espace public appelée \" Dans Ma Rue\".</p><p>Plus d'informations <a href=\"https://www.paris.fr/pages/signaleurs-dans-ma-rue-agir-sur-l-espace-public-6682\" target=\"_blank\">Signaleurs « Dans ma rue » : agir sur l’espace public</a></p><p>Dans ce jeu de données vous retrouvez l<b>'ensemble des anomalies signalées de l'année précédente et en cours à J - 3 mois.</b></p><p>Les données antérieures sont disponibles dans le jeu de données historique : <a href=\"https://parisdata.opendatasoft.com/explore/dataset/dans-ma-rue-historique-anomalies-signalees/information/\" target=\"_blank\">Dans Ma Rue - Historique - Anomalies signalées</a></p>",
+          "theme": [
+            "Equipements, Services, Social"
+          ],
+          "keyword": [
+            "propreté",
+            "signalement",
+            "graffiti",
+            "DMR",
+            "encombrants",
+            "Mobilier urbain",
+            "espace public",
+            "2 roues motorisés",
+            "vélo",
+            "Dans Ma Rue"
+          ],
+          "license": "Open Database License (ODbL)",
+          "license_url": "http://opendatacommons.org/licenses/odbl/",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2025-09-12T04:54:56+00:00",
+          "modified_updates_on_metadata_change": false,
+          "modified_updates_on_data_change": true,
+          "data_processed": "2025-09-12T04:54:56+00:00",
+          "metadata_processed": "2025-09-12T04:54:56.414000+00:00",
+          "geographic_reference": [
+            "fr_70_200054781"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "Métropole du Grand Paris"
+          ],
+          "geometry_types": [
+            "Point"
+          ],
+          "bbox": {
+            "type": "Feature",
+            "geometry": {
+              "coordinates": [
+                [
+                  [
+                    2.469498859718442,
+                    48.90209196601063
+                  ],
+                  [
+                    2.2253400553017855,
+                    48.90209196601063
+                  ],
+                  [
+                    2.2253400553017855,
+                    48.81575773470104
+                  ],
+                  [
+                    2.469498859718442,
+                    48.81575773470104
+                  ],
+                  [
+                    2.469498859718442,
+                    48.90209196601063
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "properties": {}
+          },
+          "publisher": "Ville de Paris",
+          "references": null,
+          "records_count": 1304640,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": false,
+          "parent_domain": null,
+          "update_frequency": null
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "quantite-de-dechets-produits-et-tries-par-habitant-et-par-an",
+      "dataset_uid": "da_pbqvug",
+      "has_records": true,
+      "features": [
+        "analyze",
+        "timeserie",
+        "custom_view"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "annee",
+          "description": null,
+          "annotations": {
+            "timeserie_precision": "year"
+          },
+          "label": "Année",
+          "type": "date"
+        },
+        {
+          "name": "type_de_dechets",
+          "description": null,
+          "annotations": {},
+          "label": "Type de déchets",
+          "type": "text"
+        },
+        {
+          "name": "quantite",
+          "description": null,
+          "annotations": {},
+          "label": "Quantité",
+          "type": "double"
+        },
+        {
+          "name": "variation_annuelle_des_dechets",
+          "description": null,
+          "annotations": {},
+          "label": "Variation annuelle des déchets",
+          "type": "double"
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": null,
+          "issued": null,
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": null,
+          "spatial": null,
+          "temporal": null,
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Quantité de déchets produits et triés par habitant et par an",
+          "description": "<p>L’indicateur représente la quantité annuelle de déchets ménagers et assimilés collectés par le service public de gestion des déchets. Cette quantité est ramenée au nombre de parisien.</p><p>Cette quantité concerne les ordures ménagères résiduelles (déchets non triés) et les collectes sélectives (déchets triés) : biodéchets, multimatériaux, emballages en verre et déchets occasionnels.</p><p>Les données sont issues du Rapport Annuel sur le prix et la qualité du service public de prévention et de gestion des déchets ménagers et assimilés à Paris. Ce rapport est produit chaque par la Direction de la Propreté et de l’Eau.</p><div>En 2022, la production de déchets ménagers et assimilés par habitants est en baisse de 3,3 % par rapport à l’année 2019. En comparaison à 2021, la quantité de déchets à Paris est en hausse de 5,8 %. Ce chiffre doit toutefois être nuancé au regard de la crise sanitaire qui avait fortement réduit l’activité économique et touristique, en 2020 et 2021. Les tonnages d’ordures ménagères résiduelles ont baissé de 9 % vis-à-vis de 2019 alors ceux des multimatériaux et du verre progressent respectivement de 9,7 % et de 1,4 %. Les erreurs de tri baissent également de 25,48 % en 2021 à 22,53 % en 2022.</div>",
+          "theme": [
+            "Environnement"
+          ],
+          "keyword": [
+            "Environnement",
+            "déchets",
+            "poubelle "
+          ],
+          "license": "Licence Ouverte (Etalab)",
+          "license_url": "https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Licence_Ouverte.pdf",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2024-12-02T15:15:46+00:00",
+          "modified_updates_on_metadata_change": false,
+          "modified_updates_on_data_change": false,
+          "data_processed": "2025-03-14T13:37:35+00:00",
+          "metadata_processed": "2025-03-14T13:37:35.383000+00:00",
+          "geographic_reference": null,
+          "geographic_reference_auto": false,
+          "territory": null,
+          "geometry_types": null,
+          "bbox": null,
+          "publisher": "Direction de la Propreté et de l'Eau - Ville de Paris",
+          "references": "AIME François SRDIP - DPE",
+          "records_count": 25,
+          "attributions": [
+            "RPQS"
+          ],
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": false,
+          "parent_domain": null,
+          "update_frequency": "ANNUAL"
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "dechets-menagers-points-dapport-volontaire-composteurs",
+      "dataset_uid": "da_tuqbd2",
+      "has_records": true,
+      "features": [
+        "analyze",
+        "geo"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "operateur",
+          "description": null,
+          "annotations": {
+            "facet": true,
+            "facetsort": "alphanum",
+            "disjunctive": true,
+            "sortable": true
+          },
+          "label": "Entité en charge du composteur",
+          "type": "text"
+        },
+        {
+          "name": "nom",
+          "description": null,
+          "annotations": {},
+          "label": "Nom du site",
+          "type": "text"
+        },
+        {
+          "name": "adr",
+          "description": null,
+          "annotations": {},
+          "label": "Adresse de l'emplacement",
+          "type": "text"
+        },
+        {
+          "name": "cquartier",
+          "description": null,
+          "annotations": {},
+          "label": "Conseil de quartier de l'emplacement",
+          "type": "text"
+        },
+        {
+          "name": "arrdt",
+          "description": null,
+          "annotations": {},
+          "label": "Arrondissement de l'emplacement",
+          "type": "text"
+        },
+        {
+          "name": "secteur",
+          "description": null,
+          "annotations": {},
+          "label": "Nom du premier secteur",
+          "type": "text"
+        },
+        {
+          "name": "geo_shape",
+          "description": null,
+          "annotations": {},
+          "label": "geo_shape",
+          "type": "geo_shape"
+        },
+        {
+          "name": "geo_point_2d",
+          "description": null,
+          "annotations": {},
+          "label": "geo_point_2d",
+          "type": "geo_point_2d"
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": null,
+          "issued": null,
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": "monthly",
+          "spatial": null,
+          "temporal": null,
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Déchets ménagers - Points d'apport volontaire - Composteurs",
+          "description": "<p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><b style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-weight: 700;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">Localisation\ndes points de collecte en apport volontaire destinés au composte.</span></b><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"></span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><b style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-weight: 700;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">Composter\nses biodéchets</span></b></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">À\nParis, les déchets organiques représentent encore 22 % des ordures ménagères du\nbac à couvercle vert. Composter ses biodéchets permet de recycler ses déchets\nde cuisine et de jardin et de produire naturellement de l’engrais pour les\nplantations. </span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">En\ntriant et valorisant ses biodéchets à la source grâce au compostage, on peut\nréduire de 77 kg le poids de déchets produits par an par habitant !</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><b style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-weight: 700;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">Le compostage, comment ça\nfonctionne ? </span></b></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">Les\ndéchets de cuisine et de jardin sont déposés dans un bac réservé à cet effet :\nle composteur.</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">Au\nfil du temps, grâce à l’humidité, à l’ajout de matière sèche et au travail des\npetites bêtes qui se nourrissent de la matière pour se développer, ainsi qu'au\nbrassage régulier du composteur: les déchets se décomposent pour se transformer\nen compost. </span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">Le\ncompost naturel produit se réutilise sous forme d’engrais gratuit pour ses\nplantes d’appartement ou comme terreau fertile pour les jardinières. On peut\négalement contribuer à végétaliser les espaces verts communs. </span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><b style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-weight: 700;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">Quels déchets composter ? </span></b></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: Symbol; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">·<span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 9.33px; font-size-adjust: none; font-stretch: 100%; font-style: normal; font-variant: normal; font-weight: 400; line-height: normal; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">        \n</span></span></span><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">épluchures de fruits et légumes</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: Symbol; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">·<span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 9.33px; font-size-adjust: none; font-stretch: 100%; font-style: normal; font-variant: normal; font-weight: 400; line-height: normal; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">        \n</span></span></span><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">restes alimentaires</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: Symbol; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">·<span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 9.33px; font-size-adjust: none; font-stretch: 100%; font-style: normal; font-variant: normal; font-weight: 400; line-height: normal; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">        \n</span></span></span><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">coquilles d’œufs</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: Symbol; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">·<span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 9.33px; font-size-adjust: none; font-stretch: 100%; font-style: normal; font-variant: normal; font-weight: 400; line-height: normal; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">        \n</span></span></span><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">marc de café, sachets de thé</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: Symbol; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">·<span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 9.33px; font-size-adjust: none; font-stretch: 100%; font-style: normal; font-variant: normal; font-weight: 400; line-height: normal; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">        \n</span></span></span><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">filtres en papier</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: Symbol; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">·<span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 9.33px; font-size-adjust: none; font-stretch: 100%; font-style: normal; font-variant: normal; font-weight: 400; line-height: normal; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">        \n</span></span></span><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">essuie-tout</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: Symbol; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">·<span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 9.33px; font-size-adjust: none; font-stretch: 100%; font-style: normal; font-variant: normal; font-weight: 400; line-height: normal; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">        \n</span></span></span><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">cartons salis à déchiqueter</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: Symbol; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">·<span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 9.33px; font-size-adjust: none; font-stretch: 100%; font-style: normal; font-variant: normal; font-weight: 400; line-height: normal; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">        \n</span></span></span><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">plantes d’intérieur</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: Symbol; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">·<span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 9.33px; font-size-adjust: none; font-stretch: 100%; font-style: normal; font-variant: normal; font-weight: 400; line-height: normal; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">        \n</span></span></span><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">feuilles mortes</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: Symbol; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">·<span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 9.33px; font-size-adjust: none; font-stretch: 100%; font-style: normal; font-variant: normal; font-weight: 400; line-height: normal; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">        \n</span></span></span><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">fleurs fanées</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: Symbol; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">·<span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 9.33px; font-size-adjust: none; font-stretch: 100%; font-style: normal; font-variant: normal; font-weight: 400; line-height: normal; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">        \n</span></span></span><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">résidus végétaux…</span></p><p style=\"margin: 0px 0px 10px; text-align: left; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; text-decoration: none; word-spacing: 0px; white-space: normal; box-sizing: border-box; orphans: 2; -webkit-text-stroke-width: 0px; background-color: transparent;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><b>Certains\ndéchets alimentaires et de maison ne peuvent pas être compostés :</b></span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: Symbol; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">·<span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 9.33px; font-size-adjust: none; font-stretch: 100%; font-style: normal; font-variant: normal; font-weight: 400; line-height: normal; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">        \n</span></span></span><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">les agrumes</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: Symbol; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">·<span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 9.33px; font-size-adjust: none; font-stretch: 100%; font-style: normal; font-variant: normal; font-weight: 400; line-height: normal; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">        \n</span></span></span><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">l’ail et l’échalote (qui sont des vermifuges)</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: Symbol; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">·<span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 9.33px; font-size-adjust: none; font-stretch: 100%; font-style: normal; font-variant: normal; font-weight: 400; line-height: normal; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">        \n</span></span></span><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">les corps gras (huile, beurre…)</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: Symbol; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">·<span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 9.33px; font-size-adjust: none; font-stretch: 100%; font-style: normal; font-variant: normal; font-weight: 400; line-height: normal; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">        \n</span></span></span><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">les noyaux</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: Symbol; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">·<span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 9.33px; font-size-adjust: none; font-stretch: 100%; font-style: normal; font-variant: normal; font-weight: 400; line-height: normal; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">        \n</span></span></span><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\">les viandes et les poissons</span></p><p style=\"background-color: transparent; box-sizing: border-box; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 10px; margin-left: 0px; margin-right: 0px; margin-top: 0px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;\"><span style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: &amp;quot;Arial&amp;quot;,&amp;quot;sans-serif&amp;quot;; font-size: 14.66px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;\"><u style=\"box-sizing: border-box; color: rgb(0, 0, 0);\"><font color=\"#0000ff\" style=\"box-sizing: border-box; color: rgb(0, 0, 0);\"><a href=\"https://www.paris.fr/pages/reduire-et-recycler-ses-dechets-114/#reemployer-and-nbsp-donner-une-seconde-vie-a-ses-objets-occasionnels\" style=\"background-color: transparent; box-sizing: border-box; color: rgb(51, 122, 183); font-family: -apple-system,BlinkMacSystemFont,&amp;quot;Segoe UI&amp;quot;,Roboto,Helvetica,Arial,sans-serif; font-size: 14.66px; font-weight: 400; line-height: 20.52px; text-decoration: underline;\" target=\"_blank\">Plus d'informations sur Paris.fr</a></font></u></span></p>",
+          "theme": [
+            "Environnement"
+          ],
+          "keyword": [
+            "Ordures ménagères",
+            "Point de collecte",
+            "Tri",
+            "Equipements",
+            "DPE"
+          ],
+          "license": "Licence Ouverte (Etalab)",
+          "license_url": "https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Licence_Ouverte.pdf",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2025-09-03T05:00:25+00:00",
+          "modified_updates_on_metadata_change": true,
+          "modified_updates_on_data_change": true,
+          "data_processed": "2025-09-03T05:00:25+00:00",
+          "metadata_processed": "2025-09-03T05:00:25.652000+00:00",
+          "geographic_reference": [
+            "fr_80_75056"
+          ],
+          "geographic_reference_auto": false,
+          "territory": [
+            "Paris"
+          ],
+          "geometry_types": [
+            "Point"
+          ],
+          "bbox": {
+            "type": "Feature",
+            "geometry": {
+              "coordinates": [
+                [
+                  [
+                    2.411708403378725,
+                    48.90135318506509
+                  ],
+                  [
+                    2.261823546141386,
+                    48.90135318506509
+                  ],
+                  [
+                    2.261823546141386,
+                    48.821575278416276
+                  ],
+                  [
+                    2.411708403378725,
+                    48.821575278416276
+                  ],
+                  [
+                    2.411708403378725,
+                    48.90135318506509
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "properties": {}
+          },
+          "publisher": "Direction de la Propreté et de l'Eau - Ville de Paris",
+          "references": null,
+          "records_count": 88,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": false,
+          "parent_domain": null,
+          "update_frequency": "MONTHLY"
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "dechets-menagers-points-dapport-volontaire-recycleries-et-ressourceries",
+      "dataset_uid": "da_hyloy6",
+      "has_records": true,
+      "features": [
+        "analyze",
+        "geo"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "operateur",
+          "annotations": {
+            "sortable": true,
+            "facet": true,
+            "facetsort": "alphanum",
+            "disjunctive": true
+          },
+          "description": null,
+          "label": "OPERATEUR",
+          "type": "text"
+        },
+        {
+          "name": "adresse",
+          "annotations": {},
+          "description": null,
+          "label": "ADRESSE",
+          "type": "text"
+        },
+        {
+          "name": "code_postal",
+          "annotations": {
+            "sortable": true,
+            "disjunctive": true,
+            "facetsort": "alphanum",
+            "facet": true
+          },
+          "description": null,
+          "label": "CODE_POSTAL",
+          "type": "text"
+        },
+        {
+          "name": "type",
+          "annotations": {
+            "facet": true,
+            "facetsort": "alphanum",
+            "disjunctive": true,
+            "sortable": true
+          },
+          "description": null,
+          "label": "TYPE",
+          "type": "text"
+        },
+        {
+          "name": "latitude",
+          "annotations": {},
+          "description": null,
+          "label": "Latitude",
+          "type": "double"
+        },
+        {
+          "name": "longitude",
+          "annotations": {},
+          "description": null,
+          "label": "Longitude",
+          "type": "double"
+        },
+        {
+          "name": "coordonnees_geo",
+          "annotations": {},
+          "description": null,
+          "label": "Coordonnées Géo",
+          "type": "geo_point_2d"
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": "2021-10-04",
+          "issued": "2021-10-04",
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": "Mensuelle",
+          "spatial": null,
+          "temporal": null,
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Déchets ménagers - Points d'apport volontaire - Recycleries et ressourceries",
+          "description": "<p><b>Jeu de données localisant les structures de réemploi <span style='font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; font-size: 0.875rem;'>du </span><span style='font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; font-size: 0.875rem;'>type recycleries ou ressourceries.</span></b></p><p>La recyclerie collecte, réemploie et valorise les déchets, elle met en œuvre une action quotidienne et pérenne de sensibilisation et d'éducation au réemploi. <span style=\"font-family: inherit; font-size: 0.875rem;\">En donnant vos objets avant qu'ils ne deviennent des déchets, ils contribuent à créer des emplois et, une fois remis en état, ils serviront à d'autres personnes pour donner une seconde vie à vos objets.</span></p><p>Avec plus d'une vingtaine de lieu de réemploi à paris type recycleries ou ressourceries il y a forcément une structure près de chez vous pour donner une seconde vie à vos objets.</p><p><a href=\"https://www.paris.fr/pages/en-2019-paris-vous-facilite-le-tri-6266\" target=\"_blank\">Plus d'information sur Paris.fr</a></p>",
+          "theme": [
+            "Environnement"
+          ],
+          "keyword": [
+            "DPE",
+            "Ordures ménagères",
+            "Point de collecte",
+            "Tri",
+            "Equipements"
+          ],
+          "license": "Open Database License (ODbL)",
+          "license_url": "http://opendatacommons.org/licenses/odbl/",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2021-10-04T12:59:14+00:00",
+          "modified_updates_on_metadata_change": false,
+          "modified_updates_on_data_change": false,
+          "data_processed": "2021-10-14T13:45:17+00:00",
+          "metadata_processed": "2021-10-14T13:45:17.595000+00:00",
+          "geographic_reference": [
+            "fr_80_75056"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "Paris"
+          ],
+          "geometry_types": [
+            "Point"
+          ],
+          "bbox": null,
+          "publisher": "Direction de la Propreté et de l'Eau - Ville de Paris",
+          "references": null,
+          "records_count": 12,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": false,
+          "parent_domain": null,
+          "update_frequency": null
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "zonage-pluvial",
+      "dataset_uid": "da_zafbyo",
+      "has_records": true,
+      "features": [
+        "analyze",
+        "geo"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "type",
+          "description": null,
+          "annotations": {
+            "facet": true,
+            "facetsort": "alphanum",
+            "disjunctive": true,
+            "sortable": true
+          },
+          "label": "Type",
+          "type": "text"
+        },
+        {
+          "name": "superficie_ha",
+          "description": null,
+          "annotations": {
+            "unit": "ha",
+            "decimals": 2
+          },
+          "label": "Superficie en hectares",
+          "type": "double"
+        },
+        {
+          "name": "geo_shape",
+          "description": null,
+          "annotations": {},
+          "label": "geo_shape",
+          "type": "geo_shape"
+        },
+        {
+          "name": "geo_point_2d",
+          "description": null,
+          "annotations": {},
+          "label": "geo_point_2d",
+          "type": "geo_point_2d"
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": "2019-11-28",
+          "issued": "2019-11-28",
+          "creator": "DPE / STEA",
+          "contributor": "DSIN / BGEO",
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": null,
+          "spatial": null,
+          "temporal": null,
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Zonage pluvial",
+          "description": "<p><b>Zonage du Règlement pluvial de Paris</b></p><p>Le règlement de zonage pluvial de Paris, appelé « ParisPluie », est opposable depuis mars 2018. Il vise à gérer l'eau de pluie au plus près de là où elle tombe et à limiter ainsi son admission dans le réseau d’assainissement.</p><p>Son principe consiste à abattre obligatoirement en 24 heures, les premiers millimètres des pluies tombées sur tout terrain ou ensemble de terrains, public ou privé, dès lors que sa superficie est éligible au règlement de zonage pluvial. On parle d'abattement volumique minimum (4, 8, 12 ou 16mm selon les endroits). Le volume excédentaire est transféré au réseau d'assainissement.</p><p>L'objectif optimum qui peut bien sûr être recherché, correspond à la déconnexion totale des eaux pluviales, ce qui signifie aucun rejet dans le réseau d'assainissement quel que soit le type de pluie jusqu’à la pluie décennale (48mm en 4 heures).</p><p>La carte du zonage pluvial parisien a été construite selon les règles de fonctionnement hydraulique du réseau d'assainissement et les caractéristiques géologiques du sous-sol.</p><p>Pour connaître la zone d'abattement dans laquelle se situe un projet (objectif minimum à atteindre), c'est la situation de son point de raccordement au réseau d’assainissement qui compte (adresse du branchement existant ou à créer).</p><p>Particularité de la zone hachurée : sur cette zone, s’applique l’exigence supplémentaire, pour tout projet d’une surface de référence de plus de 2 500 m², de réguler le débit de fuite à 10 L/s/ha du rejet des volumes d’eaux pluviales non abattus vers le réseau d’assainissement, au moins jusqu’à la pluie décennale.</p><p><br/></p><p><b>Documentation &amp; cartographie :</b></p><p>Pour accéder au règlement et au Guide d'accompagnement du ParisPluie, se référer à la page suivante : <a href=\"https://www.paris.fr/pages/le-plan-parispluie-5618/\" target=\"_blank\"><b>Plan Paris Pluie</b></a></p><p><span style=\"font-size: 12.495px;\"><b><a href=\"https://capgeo.maps.arcgis.com/apps/Media/index.html?appid=fc5c34dcaccb4e1983d1367f12da0e4c\" target=\"_blank\">Cartographie du zonage pluvial pluvial de Paris</a></b></span></p>",
+          "theme": [
+            "Environnement"
+          ],
+          "keyword": [
+            "Parispluie",
+            "eaux pluviales",
+            "Réglementation"
+          ],
+          "license": "Open Database License (ODbL)",
+          "license_url": "http://opendatacommons.org/licenses/odbl/",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2025-09-01T05:20:05+00:00",
+          "modified_updates_on_metadata_change": true,
+          "modified_updates_on_data_change": true,
+          "data_processed": "2025-09-01T05:20:05+00:00",
+          "metadata_processed": "2025-09-01T05:20:05.539000+00:00",
+          "geographic_reference": [
+            "fr_80_75056"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "Paris"
+          ],
+          "geometry_types": [
+            "Polygon"
+          ],
+          "bbox": {
+            "type": "Feature",
+            "geometry": {
+              "coordinates": [
+                [
+                  [
+                    2.4697566870599985,
+                    48.90216195490211
+                  ],
+                  [
+                    2.2240942530333996,
+                    48.90216195490211
+                  ],
+                  [
+                    2.2240942530333996,
+                    48.815585360862315
+                  ],
+                  [
+                    2.4697566870599985,
+                    48.815585360862315
+                  ],
+                  [
+                    2.4697566870599985,
+                    48.90216195490211
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "properties": {}
+          },
+          "publisher": "Direction de la Propreté et de l'Eau - Ville de Paris",
+          "references": null,
+          "records_count": 19,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": false,
+          "parent_domain": null,
+          "update_frequency": null
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "dechets-menagers-points-dapport-volontaire-conteneur-textile",
+      "dataset_uid": "da_14vq5o",
+      "has_records": true,
+      "features": [
+        "analyze",
+        "geo"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "identifiant",
+          "annotations": {
+            "sortable": true
+          },
+          "description": null,
+          "label": "Identifiant",
+          "type": "text"
+        },
+        {
+          "name": "operateur",
+          "annotations": {
+            "facet": true,
+            "facetsort": "alphanum",
+            "disjunctive": true,
+            "sortable": true
+          },
+          "description": null,
+          "label": "Opérateur",
+          "type": "text"
+        },
+        {
+          "name": "adresse",
+          "annotations": {},
+          "description": null,
+          "label": "Adresse",
+          "type": "text"
+        },
+        {
+          "name": "code_postal",
+          "annotations": {
+            "facet": true,
+            "facetsort": "alphanum",
+            "disjunctive": true,
+            "sortable": true
+          },
+          "description": null,
+          "label": "Code postal",
+          "type": "int"
+        },
+        {
+          "name": "type",
+          "annotations": {
+            "facet": true,
+            "facetsort": "alphanum",
+            "disjunctive": true,
+            "sortable": true
+          },
+          "description": null,
+          "label": "Type espace",
+          "type": "text"
+        },
+        {
+          "name": "latitude",
+          "annotations": {},
+          "description": null,
+          "label": "Latitude",
+          "type": "double"
+        },
+        {
+          "name": "longitude",
+          "annotations": {},
+          "description": null,
+          "label": "Longitude",
+          "type": "double"
+        },
+        {
+          "name": "coordonnees_geo",
+          "annotations": {},
+          "description": null,
+          "label": "Coordonnées Géo",
+          "type": "geo_point_2d"
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": "2020-01-30",
+          "issued": "2020-01-30",
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": "Mensuelle",
+          "spatial": null,
+          "temporal": null,
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Déchets ménagers - Points d'apport volontaire - Conteneur textile",
+          "description": "<p style=\"margin: 0px 0px 10px; text-align: left; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-variant: normal; word-spacing: 0px; white-space: normal; box-sizing: border-box; orphans: 2; -webkit-text-stroke-width: 0px; background-color: transparent;\"><b><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>Localisation\ndes points de collecte en apport volontaire destinés au textile.</span></b><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'></span></p><p style=\"margin: 0px 0px 10px; text-align: left; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-variant: normal; word-spacing: 0px; white-space: normal; box-sizing: border-box; orphans: 2; -webkit-text-stroke-width: 0px; background-color: transparent;\"><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>Ne jetez pas vos vêtements, foulards, gants et bonnets, draps et\nserviettes, nappes et mouchoirs, chaussures de ville et de sport, tongs et\nsandales…, même usés, ils peuvent servir et être valorisés ! </span></p><p style=\"margin: 0px 0px 10px; text-align: left; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-variant: normal; word-spacing: 0px; white-space: normal; box-sizing: border-box; orphans: 2; -webkit-text-stroke-width: 0px; background-color: transparent;\"><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>Trois\nopérateurs de la collecte des textiles, Le Relais 75, Le Relais Val-de-Seine et\nEcotextile, mettent à votre disposition plus de 300 conteneurs sur le\nterritoire parisien. </span></p><p style=\"margin: 0px 0px 10px; text-align: left; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-variant: normal; word-spacing: 0px; white-space: normal; box-sizing: border-box; orphans: 2; -webkit-text-stroke-width: 0px; background-color: transparent;\"><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>Les\ntextiles, linges et chaussures déposés sont ensuite triés, et soit revendus pour\nêtre réemployés, soit recyclés. </span></p><p style=\"margin: 0px 0px 10px; text-align: left; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-variant: normal; word-spacing: 0px; white-space: normal; box-sizing: border-box; orphans: 2; -webkit-text-stroke-width: 0px; background-color: transparent;\"><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'><u><font color=\"#0000ff\"><a href=\"https://www.paris.fr/pages/reduire-et-recycler-ses-dechets-114/#reemployer-and-nbsp-donner-une-seconde-vie-a-ses-objets-occasionnels\" target=\"_blank\">Plus d'informations sur Paris.fr</a></font></u></span></p><p style=\"margin: 0px 0px 10px; text-align: left; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; font-size: 12.46px; font-variant: normal; word-spacing: 0px; white-space: normal; box-sizing: border-box; orphans: 2; -webkit-text-stroke-width: 0px; background-color: transparent;\">\n\n<b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><br/></p>",
+          "theme": [
+            "Environnement"
+          ],
+          "keyword": [
+            "Ordures ménagères",
+            "Point de collecte",
+            "Tri",
+            "Equipements",
+            "DPE"
+          ],
+          "license": "Open Database License (ODbL)",
+          "license_url": "http://opendatacommons.org/licenses/odbl/",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2021-11-03T19:19:42+00:00",
+          "modified_updates_on_metadata_change": false,
+          "modified_updates_on_data_change": false,
+          "data_processed": "2021-11-03T19:18:05+00:00",
+          "metadata_processed": "2021-11-03T19:19:52.437000+00:00",
+          "geographic_reference": [
+            "fr_80_75056"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "Paris"
+          ],
+          "geometry_types": [
+            "Point"
+          ],
+          "bbox": null,
+          "publisher": "Direction de la Propreté et de l'Eau - Ville de Paris",
+          "references": null,
+          "records_count": 237,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": false,
+          "parent_domain": null,
+          "update_frequency": null
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "dechets-menagers-points-dapport-volontaire-stations-trilib",
+      "dataset_uid": "da_ypensv",
+      "has_records": true,
+      "features": [
+        "geo",
+        "analyze",
+        "timeserie"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "identifiant",
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "description": null,
+          "label": "Identifiant",
+          "type": "text"
+        },
+        {
+          "name": "date_de_mise_en_service",
+          "annotations": {
+            "facet": true,
+            "facetsort": "-alphanum",
+            "timerangeFilter": true
+          },
+          "description": null,
+          "label": "Date mise en service",
+          "type": "date"
+        },
+        {
+          "name": "adresse",
+          "annotations": {
+            "sortable": true
+          },
+          "description": null,
+          "label": "Adresse",
+          "type": "text"
+        },
+        {
+          "name": "code_postal",
+          "annotations": {
+            "facet": true,
+            "facetsort": "alphanum",
+            "sortable": true,
+            "disjunctive": true
+          },
+          "description": null,
+          "label": "Code postal",
+          "type": "text"
+        },
+        {
+          "name": "etat",
+          "annotations": {
+            "facet": true,
+            "facetsort": "alphanum",
+            "disjunctive": true,
+            "sortable": true
+          },
+          "description": null,
+          "label": "Etat",
+          "type": "text"
+        },
+        {
+          "name": "nombre_de_module_verre",
+          "annotations": {},
+          "description": null,
+          "label": "Nombre module verre",
+          "type": "int"
+        },
+        {
+          "name": "nombre_de_module_mm_emb",
+          "annotations": {},
+          "description": null,
+          "label": "Nombre module MM Emballage",
+          "type": "int"
+        },
+        {
+          "name": "latitude",
+          "annotations": {},
+          "description": null,
+          "label": "Latitude",
+          "type": "double"
+        },
+        {
+          "name": "longitude",
+          "annotations": {},
+          "description": null,
+          "label": "Longitude",
+          "type": "double"
+        },
+        {
+          "name": "coordonnees_geo_wgs84",
+          "annotations": {},
+          "description": null,
+          "label": "Coordonnees géographiques",
+          "type": "geo_point_2d"
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": "2020-01-30",
+          "issued": "2020-01-30",
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": "Mensuelle",
+          "spatial": null,
+          "temporal": null,
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Déchets ménagers - Points d'apport volontaire - Stations Trilib",
+          "description": "<p><b><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>Localisation des conteneurs de\ntri de proximité accessibles 24h/24 – TRILIB’.</span></b><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 9.5pt;'></span></p><p>\n\n</p><p style=\"margin:0cm;margin-bottom:.0001pt;box-sizing: border-box;orphans: 2;\n-webkit-text-stroke-width: 0px;word-spacing:0px\"><span style=\"margin: 0px; box-sizing: border-box;\"><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>Ces conteneurs de tri de proximité\naccessibles 24h/24 permettent de collecter plus et mieux, notamment le verre,\nles emballages en plastique et en métal, les papiers et les cartons. </span></span></p><p>\n\n</p><p style=\"margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;\nmargin-bottom:.0001pt;text-indent:-18.0pt;mso-list:l0 level1 lfo1\"><span style=\"margin: 0px; color: black; font-family: Symbol; font-size: 11pt;\"><span style=\"margin: 0px;\">·<span style='font: 7pt \"Times New Roman\"; margin: 0px; font-size-adjust: none; font-stretch: normal;'>        \n</span></span></span><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>Pourquoi Trilib’ ? </span></p><p>\n\n</p><p style=\"margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;\nmargin-bottom:.0001pt;text-indent:-18.0pt;mso-list:l0 level1 lfo1\"><span style=\"margin: 0px; color: black; font-family: Symbol; font-size: 11pt;\"><span style=\"margin: 0px;\">·<span style='font: 7pt \"Times New Roman\"; margin: 0px; font-size-adjust: none; font-stretch: normal;'>        \n</span></span></span><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>Trilib' : comment ça marche ?</span></p><p>\n\n</p><p style=\"margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;\nmargin-bottom:.0001pt;text-indent:-18.0pt;mso-list:l0 level1 lfo1\"><span style=\"margin: 0px; color: black; font-family: Symbol; font-size: 11pt;\"><span style=\"margin: 0px;\">·<span style='font: 7pt \"Times New Roman\"; margin: 0px; font-size-adjust: none; font-stretch: normal;'>        \n</span></span></span><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>Calendrier de déploiement des nouvelles stations</span></p><p>\n\n</p><p style=\"margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:18.0pt;\nmargin-bottom:.0001pt;tab-stops:171.05pt\"><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'><a href=\"https://www.paris.fr/pages/trilib-une-nouvelle-approche-du-tri-selectif-3963\"><u><font color=\"#0000ff\">Plus\nd'informations sur Paris.fr</font></u></a></span><span style='margin: 0px; font-family: \"Arial\",\"sans-serif\"; font-size: 9.5pt;'></span></p><p>\n\n<b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><u></u><font color=\"#0000ff\"></font><font size=\"3\"></font><font face=\"Times New Roman\"></font><br/></p>",
+          "theme": [
+            "Environnement"
+          ],
+          "keyword": [
+            "Ordures ménagères",
+            "Point de collecte",
+            "Tri",
+            "Equipements",
+            "DPE",
+            "TRILIB"
+          ],
+          "license": "Open Database License (ODbL)",
+          "license_url": "http://opendatacommons.org/licenses/odbl/",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2021-10-04T12:08:13+00:00",
+          "modified_updates_on_metadata_change": false,
+          "modified_updates_on_data_change": false,
+          "data_processed": "2021-10-14T13:48:21+00:00",
+          "metadata_processed": "2021-10-14T13:48:21.595000+00:00",
+          "geographic_reference": [
+            "fr_80_75056"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "Paris"
+          ],
+          "geometry_types": [
+            "Point"
+          ],
+          "bbox": null,
+          "publisher": "Direction de la Propreté et de l'Eau - Ville de Paris",
+          "references": null,
+          "records_count": 238,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": false,
+          "parent_domain": null,
+          "update_frequency": null
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "dechets-menagers-points-dapport-volontaire-colonnes-a-verre",
+      "dataset_uid": "da_vhp1eu",
+      "has_records": true,
+      "features": [
+        "analyze",
+        "geo"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "geo_point_2d",
+          "description": null,
+          "annotations": {},
+          "label": "geo_point_2d",
+          "type": "geo_point_2d"
+        },
+        {
+          "name": "id_emplacement",
+          "description": null,
+          "annotations": {},
+          "label": "Identifiant de l'emplacement",
+          "type": "int"
+        },
+        {
+          "name": "id_mobilier",
+          "description": null,
+          "annotations": {},
+          "label": "Identifiant du mobilier",
+          "type": "text"
+        },
+        {
+          "name": "type_mobilier",
+          "description": null,
+          "annotations": {},
+          "label": "Type du mobilier installé",
+          "type": "text"
+        },
+        {
+          "name": "adr",
+          "description": null,
+          "annotations": {},
+          "label": "Adresse à proximité de l'emplacement",
+          "type": "text"
+        },
+        {
+          "name": "arrdt",
+          "description": null,
+          "annotations": {},
+          "label": "Arrondissement de l'emplacement",
+          "type": "text"
+        },
+        {
+          "name": "cquartier",
+          "description": null,
+          "annotations": {},
+          "label": "Conseil de quartier de l'emplacement",
+          "type": "text"
+        },
+        {
+          "name": "emplacement_statut",
+          "description": null,
+          "annotations": {},
+          "label": "Statut de l'emplacement",
+          "type": "text"
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": "2020-01-30",
+          "issued": "2020-01-30",
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": "daily",
+          "spatial": null,
+          "temporal": null,
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Déchets ménagers - Points d'apport volontaire - Colonnes à verre",
+          "description": "<p><b><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>Localisation\ndes points de collecte en apport volontaire destinés au verre.</span></b></p><p>\n\n</p><p style=\"margin-top:0cm;margin-right:0cm;margin-bottom:7.5pt;margin-left:0cm\"><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>Comme le\nbac blanc les colonnes à verre servent <span style=\"margin: 0px;\"> </span>à\ncollecter les emballages en verre afin qu'ils soient recyclés.</span></p><p>\n\n</p><p style=\"margin-top:0cm;margin-right:0cm;margin-bottom:7.5pt;margin-left:0cm\"><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>Il y a\naujourd'hui plus d'un millier de colonnes à verre installées sur la voie\npublique, en surface, et 70 colonnes à verre enterrées. On peut y déposer les\nmêmes déchets que dans le bac blanc (emballages en verre : pots, bouteilles et\nbocaux. Une attention particulière a été portée à leur dispositif\nd’insonorisation. Par ailleurs, la plupart des colonnes à verre sont dotées\nd'ouvertures surbaissées, afin de les rendre plus accessibles aux personnes à\nmobilité réduite.</span></p><p>\n\n</p><p style=\"margin-top:0cm;margin-right:0cm;margin-bottom:7.5pt;margin-left:0cm\"><b style=\"mso-bidi-font-weight:normal\"><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>Que met-on dans le bac blanc et les colonnes\nà verre ? </span></b></p><p>\n\n</p><p style=\"margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo1\"><span style=\"margin: 0px; color: black; font-family: Symbol; font-size: 11pt;\"><span style=\"margin: 0px;\">·<span style='font: 7pt \"Times New Roman\"; margin: 0px; font-size-adjust: none; font-stretch: normal;'>        \n</span></span></span><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>les bouteilles, bocaux, flacons en verre (boissons, huile,\nconserves, confiture, etc.). Ils doivent être vides, mais il est inutile de les\nrincer. </span></p><p>\n\n</p><p style=\"margin-top:0cm;margin-right:0cm;margin-bottom:7.5pt;margin-left:36.0pt;\ntext-indent:-18.0pt;mso-list:l0 level1 lfo1\"><span style=\"margin: 0px; color: black; font-family: Symbol; font-size: 11pt;\"><span style=\"margin: 0px;\">·<span style='font: 7pt \"Times New Roman\"; margin: 0px; font-size-adjust: none; font-stretch: normal;'>        \n</span></span></span><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>bon à savoir : les bouchons et couvercles métalliques,\ncapsules…sont acceptés dans le bac jaune, il seront recyclés.</span></p><p>\n\n</p><p style=\"margin-top:0cm;margin-right:0cm;margin-bottom:7.5pt;margin-left:0cm\"><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>Les\nerreurs à éviter :</span></p><p>\n\n</p><p style=\"margin-left:36.0pt;text-indent:-18.0pt;mso-list:l1 level1 lfo2\"><span style=\"margin: 0px; color: black; font-family: Symbol; font-size: 11pt;\"><span style=\"margin: 0px;\">·<span style='font: 7pt \"Times New Roman\"; margin: 0px; font-size-adjust: none; font-stretch: normal;'>        \n</span></span></span><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>la vaisselle, les vitres, les miroirs , la faïence, la porcelaine,\nles verres à boire ou verres à pied, les bougeoirs, etc. ne doivent pas être\nmélangés avec les emballages en verre et vont dans le bac vert. En effet, ils\nfondent à une température supérieure et risquent de former des défauts dans les\nnouvelles bouteilles fabriquées à partir du verre recyclé. </span></p><p>\n\n</p><p style=\"margin-top:0cm;margin-right:0cm;margin-bottom:7.5pt;margin-left:36.0pt;\ntext-indent:-18.0pt;mso-list:l1 level1 lfo2\"><span style=\"margin: 0px; color: black; font-family: Symbol; font-size: 11pt;\"><span style=\"margin: 0px;\">·<span style='font: 7pt \"Times New Roman\"; margin: 0px; font-size-adjust: none; font-stretch: normal;'>        \n</span></span></span><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'>les ampoules ne vont pas dans le bac blanc. Vous pouvez les\napporter, même brisées, dans de nombreuses grandes surfaces ou magasins de\nbricolage qui mettent des bacs de collecte dédiés à votre disposition.</span></p><p>\n\n</p><p style=\"margin-top:0cm;margin-right:0cm;margin-bottom:7.5pt;margin-left:0cm\"><a href=\"https://www.paris.fr/pages/en-2019-paris-vous-facilite-le-tri-6266#decheteries-et-points-dapport-volontaire\" target=\"_blank\">Plusd'informations sur Paris.fr</a><span style='margin: 0px; color: black; font-family: \"Arial\",\"sans-serif\"; font-size: 11pt;'></span></p><p>\n\n<b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><u></u><font color=\"#0000ff\"></font><font size=\"3\"></font><font face=\"Times New Roman\"></font><br></p>",
+          "theme": [
+            "Environnement"
+          ],
+          "keyword": [
+            "Ordures ménagères",
+            "Point de collecte",
+            "Tri",
+            "Equipements",
+            "DPE"
+          ],
+          "license": "Licence Ouverte (Etalab)",
+          "license_url": "https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Licence_Ouverte.pdf",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2025-02-21T10:20:31+00:00",
+          "modified_updates_on_metadata_change": true,
+          "modified_updates_on_data_change": false,
+          "data_processed": "2025-09-16T04:00:19+00:00",
+          "metadata_processed": "2025-09-16T04:00:19.365000+00:00",
+          "geographic_reference": [
+            "fr_80_75056"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "Paris"
+          ],
+          "geometry_types": [
+            "Point"
+          ],
+          "bbox": {
+            "type": "Feature",
+            "geometry": {
+              "coordinates": [
+                [
+                  [
+                    2.438552789390087,
+                    48.900200966745615
+                  ],
+                  [
+                    2.251550266519189,
+                    48.900200966745615
+                  ],
+                  [
+                    2.251550266519189,
+                    48.81732527632266
+                  ],
+                  [
+                    2.438552789390087,
+                    48.81732527632266
+                  ],
+                  [
+                    2.438552789390087,
+                    48.900200966745615
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "properties": {}
+          },
+          "publisher": "Direction de la Propreté et de l'Eau - Ville de Paris",
+          "references": null,
+          "records_count": 1053,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": false,
+          "parent_domain": null,
+          "update_frequency": null
+        }
+      }
+    }
+  ]
+}

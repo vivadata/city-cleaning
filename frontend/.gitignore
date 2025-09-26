@@ -1,0 +1,10 @@
+# Virtual Environment
+_env/
+__pycache__/
+
+# Environment
+config/
+.env
+
+# Module
+*.egg-info/
