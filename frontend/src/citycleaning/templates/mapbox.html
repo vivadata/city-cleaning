@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>City Cleaning - Collection Routes</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+        <link href="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+        <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
+        <script src="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.js"></script>
+        
+        <script src="{{ url_for('static', filename='mapbox/constants.js') }}"></script>
+        <script src="{{ url_for('static', filename='mapbox/input.js') }}"></script>
+        <script src="{{ url_for('static', filename='mapbox/locations.js') }}"></script>
+        <script src="{{ url_for('static', filename='mapbox/services.js') }}"></script>
+        <script src="{{ url_for('static', filename='mapbox/shipments.js') }}"></script>
+        <script src="{{ url_for('static', filename='mapbox/vehicles.js') }}"></script>
+        <script src="{{ url_for('static', filename='mapbox/routing.js') }}"></script>
+        <script src="{{ url_for('static', filename='mapbox/output.js') }}"></script>
+        <style>
+            body { margin: 0; padding: 0; }
+            #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+            .loader {
+                position: relative;
+                width: 120px;
+                height: 120px;
+                left: calc(50% - 60px);
+                top: calc(50% - 60px);
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                animation: spin 2s linear infinite;
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+
+            #map_nav {
+                position: fixed;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                top: 10px;
+                left: 10px;
+                background: white;
+                padding: 5px;
+                border-radius: 5px;
+                box-shadow: 0 0 0 2px #0000001a;
+                z-index: 1;
+
+                button {
+                    background: transparent;
+                    width: calc(100% - 10px);
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                }
+
+                button.is_open {
+                    font-weight: bold;
+                    margin: 0 5px;
+                    opacity: 0.5;
+
+                    &.active {
+                        opacity: 1;
+                    }
+                }
+
+                div.all_layers {
+                    display: flex;
+                    flex-direction: column;
+                    visibility: visible;
+
+                    &.hidden {
+                        display: none;
+                    }
+
+                    button.is_open {
+                        margin-top: 5px;
+                    }
+
+                    > div {
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 5px;
+                        visibility: visible;
+
+                        &.hidden {
+                            display: none;
+                        }
+                    }
+
+                    a {
+                        flex-grow: 1;
+                        text-shadow: 0px 0px 1px black;
+                        text-align: center;
+                        opacity: 0.5;
+
+                        &.active {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        </style>
+        <script>
+            function legendState(div, className) {
+                legend = document.querySelector(`#map_nav .${className}`);
+
+                if (legend.className == className) {
+                    div.classList = "is_open";
+                    legend.className = `${className} hidden`;
+                } else {
+                    div.classList = "is_open active";
+                    legend.className = className;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <nav id="map_nav">
+            <button 
+                typ="button" 
+                class="is_open active" 
+                onclick="legendState(this, 'all_layers')"
+            >
+                Legend
+            </button>
+            <div class="all_layers">
+                <button 
+                    typ="button" 
+                    class="is_open" 
+                    onclick="legendState(this, 'all_dropoffs')"
+                >
+                    Dropoff Points
+                </button>
+                <div class="all_dropoffs hidden"></div>
+                <button 
+                    typ="button" 
+                    class="is_open active" 
+                    onclick="legendState(this, 'all_trash')"
+                >
+                    Trash Reports & Pickup Routes
+                </button>
+                <div class="all_trash"></div>
+            </div>
+        </nav>
+        <div id="map">
+            <div class="loader"></div>
+        </div>
+        <script>
+            /*
+             * Public access token, read only
+             * Must be associated to mapbox that way for the map
+             */
+            mapboxgl.accessToken = "{{mb_pk_default}}";
+
+            // Constant to store all our layer names
+            const map_layers = {
+                dropoffs: [],
+                routes: [],
+                trash: [],
+            };
+
+            // Let's scramble our color map
+            let colorlines = _.shuffle(colors);
+
+            // Start the ball
+            create_map();
+
+            // Said ball
+            async function create_map(params) {
+                const dropoffs = await get_basics ();
+
+                const { routings, call_urls, trash_points } = await get_data (dropoffs);
+
+                // Create an instance of the map
+                const map = new mapboxgl.Map({
+                    container: "map",
+                    style: map_styles.standard, // Use the standard style for the 3d map
+                    projection: "globe", // display the map as a globe
+                    zoom: 11, // initial zoom level, 0 is the world view, higher values zoom in
+                    center: [2.349014, 48.864716] // center the map on this longitude and latitude
+                });
+
+                // restrict its controls
+                map.addControl(new mapboxgl.NavigationControl());
+                map.scrollZoom.disable();
+
+                // Define the actions on loading
+                map.on("load", async () => {
+                    map.setFog({}); // Set the default atmosphere style
+
+                    // Create a source for the trash dropoffs
+                    map.addSource(`dropoffs`, {
+                        type: "geojson",
+                        data: dropoffs,
+                    });
+
+                    // Create a circle layer for each point
+                    map.addLayer({
+                        id: `dropoffs`,
+                        type: "circle",
+                        source: `dropoffs`,
+                        layout: {
+                            "visibility": "none",
+                        },
+                        paint: {
+                            "circle-radius": 2,
+                            "circle-color": "#000000",
+                            "circle-stroke-color": "#FFFFFF",
+                            "circle-stroke-width": 2,
+                        },
+                    });
+
+                    map_layers.dropoffs.push("dropoffs");
+
+                    for (const idx in trash_points.v1) {
+                        // Create a source for the trash points
+                        map.addSource(`trash-${idx}`, {
+                            type: "geojson",
+                            data: trash_points.v1[idx],
+                        });
+
+                        // Create a circle layer for each point
+                        map.addLayer({
+                            id: `trash-${idx}`,
+                            type: "circle",
+                            source: `trash-${idx}`,
+                            layout: {
+                                "visibility": "none",
+                            },
+                            paint: {
+                                "circle-radius": 4,
+                                "circle-color": colorlines[idx],
+                                "circle-stroke-color": "#000000",
+                                "circle-stroke-width": 2,
+                            },
+                        });
+
+                        map_layers.trash.push(idx);
+                    }
+
+                    // Make a route soft counter
+                    let routes = 0;
+
+                    // Make the calls
+                    for (const this_url in call_urls) {
+                        // V1 Calls are fully defined in the url, just call in get
+                        if (call_urls[this_url].includes("v1")) {
+                            const options = { method: "GET" };
+
+                            await fetch_route({
+                                map,
+                                url: call_urls[this_url], 
+                                options, 
+                                number: routes,
+                            });
+                            routes += 1;
+
+                        // V2 however are posts and must be more defined
+                        /*} else {
+                            for (this_json in routings.v2) {
+                                const options = {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                    body: new FormData().append("json", JSON.stringify(routings.v2[this_json])),
+                                };
+
+                                await fetch_route({
+                                    map,
+                                    url: call_urls[this_url], 
+                                    options, 
+                                    number: routes,
+                                });
+                                routes += 1;
+                            }*/
+                        }
+                    }
+                });
+
+                // Behaviour when map inactive.
+                map.on('idle', async () => {
+                    // Get each toggleable layer
+                    let mapgl_layers = [];
+
+                    // If all sources are not added to the map, abort
+                    for (const this_type of Object.keys(map_layers)) {
+                        for (const this_source of map_layers[this_type]) {
+                            let source_name = this_type;
+
+                            if (this_type != "dropoffs") {
+                                source_name += `-${this_source}`
+                            }
+
+                            if (!map.getLayer(source_name)) return;
+                            mapgl_layers.push(source_name);
+                        }
+                    }
+
+                    // Set up the corresponding toggle button for each layer
+                    for (const id of mapgl_layers) {
+                        // Skip layers that already have a button set up
+                        if (document.getElementById(id)) {
+                            continue;
+                        }
+
+                        const route_params = id.split("-");
+
+                        // Create a link
+                        const link = document.createElement("a");
+                        link.id = id;
+                        link.href = "#";
+                        link.textContent = 
+                            route_params[0].substring(0, 1).toUpperCase() +
+                            route_params[0].substring(1).toLowerCase();
+                        link.style.color = !id.includes("dropoffs") 
+                            ? colorlines[parseInt(route_params[route_params.length - 1])] 
+                            : "navy";
+                        link.className = !id.includes("route") ? "" : "active";
+
+                        // Show or hide layer when the toggle is clicked.
+                        link.onclick = function (e) {
+                            const clicked_layer = this.id;
+                            e.preventDefault();
+                            e.stopPropagation();
+
+                            const visibility = map.getLayoutProperty(
+                                clicked_layer,
+                                'visibility'
+                            );
+
+                            // Toggle layer visibility by changing the layout object's visibility property.
+                            if (visibility === 'visible') {
+                                map.setLayoutProperty(clicked_layer, 'visibility', 'none');
+                                if (clicked_layer.indexOf("route-") != -1) {
+                                    let shadow_layer = clicked_layer.replace("route", "route-shadow");
+                                    map.setLayoutProperty(shadow_layer, 'visibility', 'none');
+                                }
+                                this.className = '';
+                            } else {
+                                this.className = 'active';
+                                map.setLayoutProperty(
+                                    clicked_layer,
+                                    'visibility',
+                                    'visible'
+                                );
+                                if (clicked_layer.indexOf("route-") != -1) {
+                                    let shadow_layer = clicked_layer.replace("route", "route-shadow");
+                                    map.setLayoutProperty(
+                                        shadow_layer,
+                                        'visibility',
+                                        'visible'
+                                    );
+                                }
+                            }
+                        };
+
+                        // The parent of the link
+                        const destination = `all_${route_params[0]}`;
+                        const layers = document.querySelector(`#map_nav .all_layers .${destination}`);
+
+                        // If it is trash link it up for route
+                        if (!id.includes("dropoffs")) {
+                            // Skip layers that already have a button set up
+                            if (!document.getElementById(`container-${route_params[route_params.length - 1]}`)) {
+                                const container = document.createElement("div");
+                                container.id = `container-${route_params[route_params.length - 1]}`
+                                container.style.display = "flex";
+                                layers.appendChild(container);
+                            }
+
+                            const new_id = `container-${route_params[route_params.length - 1]}`;
+                            const new_layer = 
+                                document
+                                    .querySelector(`#map_nav .all_layers .${destination} #${new_id}`);
+                            new_layer.appendChild(link);
+                        
+                        // Else put it in the right place
+                        } else {
+                            layers.appendChild(link);
+                        }
+                    }
+                });
+            }
+
+            // Function to get all the dropoff points
+            async function get_basics () {
+                const data_query = await fetch("http://127.0.0.1:8080/dropoff/all", { method: "GET" });
+                const data_json = await data_query.json();
+                let output = [];
+
+                // Normalize all points
+                const clean_json = data_json
+                    .map(
+                        ({ longitude, latitude }) => 
+                            ({ 
+                                longitude: parseFloat(longitude).toFixed(6), 
+                                latitude: parseFloat(latitude).toFixed(6), 
+                            })
+                    );
+
+                // Then loop over themto remove duplicates
+                for (const idx in clean_json) {
+                    let { longitude, latitude } = clean_json[idx];
+
+                    const exists = output.find(
+                        coord => 
+                            coord.longitude == longitude &&
+                            coord.latitude == latitude 
+                    );
+
+                    if (typeof exists == "undefined") {
+                        output.push(clean_json[idx]);
+                    }
+                }
+
+                const collection = turf.featureCollection(output
+                    .map(
+                        ({ longitude, latitude }) => 
+                            turf.point(
+                                [
+                                    parseFloat(longitude).toFixed(6),
+                                    parseFloat(latitude).toFixed(6),
+                                ]
+                            )
+                    )
+                );
+
+                return collection;
+            }
+
+            // Function to get the latest pickup points
+            async function get_data (dropoffs) {
+                const data_query = await fetch("http://127.0.0.1:8080/pickup/latest", { method: "GET" });
+                const data_json = await data_query.json();
+
+                // Generate the routing for the pick ups
+                const routings = generate_routings(data_json)
+
+                //Create the calls from the routing data
+                const call_urls = generate_calls(routings, dropoffs, "{{mb_pk_default}}");
+
+                /*
+                * Create an array in which we'll send all our trash coordinates
+                * Use it to create a geojson to mark the points on the map
+                */
+                const trash_points = {
+                    v1: routings.v1.map(
+                        rtng => turf.featureCollection(
+                            rtng.locations.map(
+                                lctn => turf.point(lctn.locations)
+                            )
+                        )
+                    ),
+                    v2: routings.v2.map(
+                        rtng => turf.featureCollection(
+                            rtng.locations.map(
+                                lctn => turf.point(lctn.locations)
+                            )
+                        )
+                    ),
+                };
+
+                return { routings, call_urls, trash_points };
+            }
+
+            // Call optimization for one route
+            async function fetch_route(params) {
+                const { map, url, options, number } = params;
+
+                // Make the call
+                const query = await fetch(url, options);
+                const response = await query.json();
+
+                // Create a route from the response
+                const routeGeoJSON = turf.featureCollection([
+                    turf.feature(response.trips[0].geometry)
+                ]);
+
+                // Create a source for the route
+                map.addSource(`route-${number}`, {
+                    type: "geojson",
+                    data: turf.featureCollection([]),
+                });
+
+                // Add the route style to the source
+                map.addLayer(
+                    {
+                        id: `route-shadow-${number}`,
+                        type: "line",
+                        source: `route-${number}`,
+                        layout: {
+                            "line-join": "round",
+                            "line-cap": "round",
+                            "visibility": "visible",
+                        },
+                        paint: {
+                            "line-color": "#000000",
+                            "line-width": ["interpolate", ["linear"], ["zoom"], 12, 4, 22, 12],
+                        },
+                    },
+                );
+
+                // Add the route style to the source
+                map.addLayer(
+                    {
+                        id: `route-${number}`,
+                        type: "line",
+                        source: `route-${number}`,
+                        layout: {
+                            "line-join": "round",
+                            "line-cap": "round",
+                            "visibility": "visible",
+                        },
+                        paint: {
+                            "line-color": colorlines[number],
+                            "line-width": ["interpolate", ["linear"], ["zoom"], 12, 3, 22, 12],
+                        },
+                    },
+                );
+
+                await make_link({ map, id: `route-${number}` });
+
+                // Show the related trash points
+                let trash_layer = `trash-${number}`;
+
+                let visibility = map.getLayoutProperty(
+                    trash_layer,
+                    'visibility'
+                );
+
+                if (visibility != "visible") {
+                    if (document.getElementById(trash_layer)) {
+                        document.getElementById(trash_layer).classList = 'active';
+                        map.setLayoutProperty(
+                            trash_layer,
+                            'visibility',
+                            'visible'
+                        );
+                    }
+                }
+
+                // Add the route itself to the source
+                map.getSource(`route-${number}`).setData(routeGeoJSON);
+            }
+
+            async function make_link(params) {
+                const { map, id } = params;
+
+                const route_params = id.split("-");
+
+                // Create a link
+                const link = document.createElement("a");
+                link.id = id;
+                link.href = "#";
+                link.textContent = 
+                    route_params[0].substring(0, 1).toUpperCase() +
+                    route_params[0].substring(1).toLowerCase();
+                link.style.color = !id.includes("dropoffs") 
+                    ? colorlines[parseInt(route_params[route_params.length - 1])] 
+                    : "navy";
+                link.className = id == "dropoffs" ? "" : "active";
+
+                // Show or hide layer when the toggle is clicked.
+                link.onclick = function (e) {
+                    const clicked_layer = this.id;
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const visibility = map.getLayoutProperty(
+                        clicked_layer,
+                        'visibility'
+                    );
+
+                    // Toggle layer visibility by changing the layout object's visibility property.
+                    if (visibility === 'visible') {
+                        map.setLayoutProperty(clicked_layer, 'visibility', 'none');
+                        if (clicked_layer.indexOf("route-") != -1) {
+                            let shadow_layer = clicked_layer.replace("route", "route-shadow");
+                            map.setLayoutProperty(shadow_layer, 'visibility', 'none');
+                        }
+                        this.className = '';
+                    } else {
+                        this.className = 'active';
+                        map.setLayoutProperty(
+                            clicked_layer,
+                            'visibility',
+                            'visible'
+                        );
+                        if (clicked_layer.indexOf("route-") != -1) {
+                            let shadow_layer = clicked_layer.replace("route", "route-shadow");
+                            map.setLayoutProperty(
+                                shadow_layer,
+                                'visibility',
+                                'visible'
+                            );
+                        }
+                    }
+                };
+
+                // Put it in the right place
+                // const destination = `all_${route_params[0]}`;
+                // const layers = document.querySelector(`#map_nav .all_layers .${destination}`);
+                // layers.appendChild(link);
+
+                // The parent of the link
+                const destination = `all_${route_params[0] == "route" ? "trash" : route_params[0]}`;
+                const layers = document.querySelector(`#map_nav .all_layers .${destination}`);
+
+                // If it is trash link it up for route
+                if (!id.includes("dropoffs")) {
+                    // Skip layers that already have a button set up
+                    if (!document.getElementById(`container-${route_params[route_params.length - 1]}`)) {
+                        const container = document.createElement("div");
+                        container.id = `container-${route_params[route_params.length - 1]}`
+                        container.style.display = "flex";
+                        layers.appendChild(container);
+                    }
+
+                    const new_id = `container-${route_params[route_params.length - 1]}`;
+                    const new_layer = 
+                        document
+                            .querySelector(`#map_nav .all_layers .${destination} #${new_id}`);
+                    new_layer.appendChild(link);
+                
+                // Else put it in the right place
+                } else {
+                    layers.appendChild(link);
+                }
+            }
+        </script>
+    </body>
+</html>
