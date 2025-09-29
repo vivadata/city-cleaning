@@ -5,7 +5,7 @@ requires-python = ">=3.12"
 dynamic = ["dependencies"]
 
 [tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
+dependencies = {file = ["requirements_api.txt"]}
 
 [build-system]
 requires = ["setuptools>=64"]
