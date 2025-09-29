@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Collection Routes</title>
+        <title>Guides</title>
         <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
         <link href="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
@@ -37,9 +37,122 @@
                 0% { transform: rotate(0deg); }
                 100% { transform: rotate(360deg); }
             }
+
+            #map_nav {
+                position: fixed;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                top: 10px;
+                left: 10px;
+                background: white;
+                padding: 5px;
+                border-radius: 5px;
+                box-shadow: 0 0 0 2px #0000001a;
+                z-index: 1;
+
+                button {
+                    background: transparent;
+                    width: calc(100% - 10px);
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                }
+
+                button.is_open {
+                    font-weight: bold;
+                    margin: 0 5px;
+                    opacity: 0.5;
+
+                    &.active {
+                        opacity: 1;
+                    }
+                }
+
+                div.all_layers {
+                    display: flex;
+                    flex-direction: column;
+                    visibility: visible;
+
+                    &.hidden {
+                        display: none;
+                    }
+
+                    button.is_open {
+                        margin-top: 5px;
+                    }
+
+                    > div {
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 5px;
+                        visibility: visible;
+
+                        &.hidden {
+                            display: none;
+                        }
+                    }
+
+                    a {
+                        color: navy;
+                        padding-left: 5px;
+                        opacity: 0.5;
+
+                        &.active {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
         </style>
+        <script>
+            function legendState(div, className) {
+                legend = document.querySelector(`#map_nav .${className}`);
+
+                if (legend.className == className) {
+                    div.classList = "is_open";
+                    legend.className = `${className} hidden`;
+                } else {
+                    div.classList = "is_open active";
+                    legend.className = className;
+                }
+            }
+        </script>
     </head>
     <body>
+        <nav id="map_nav">
+            <button 
+                typ="button" 
+                class="is_open active" 
+                onclick="legendState(this, 'all_layers')"
+            >
+                Legend
+            </button>
+            <div class="all_layers">
+                <button 
+                    typ="button" 
+                    class="is_open active" 
+                    onclick="legendState(this, 'all_dropoffs')"
+                >
+                    Dropoff Points
+                </button>
+                <div class="all_dropoffs"></div>
+                <button 
+                    typ="button" 
+                    class="is_open active" 
+                    onclick="legendState(this, 'all_trash')"
+                >
+                    Trash Locations
+                </button>
+                <div class="all_trash"></div>
+                <button 
+                    typ="button" 
+                    class="is_open active" 
+                    onclick="legendState(this, 'all_route')"
+                >
+                    Pickup Routes
+                </button>
+                <div class="all_route"></div>
+            </div>
+        </nav>
         <div id="map">
             <div class="loader"></div>
         </div>
@@ -49,6 +162,13 @@
              * Must be associated to mapbox that way for the map
              */
             mapboxgl.accessToken = "{{mb_pk_default}}";
+
+            // Constant to store all our layer names
+            const map_layers = {
+                dropoffs: [],
+                routes: [],
+                trash: [],
+            };
 
             // Let's scramble our color map
             let colorlines = _.shuffle(colors);
@@ -61,7 +181,6 @@
                 const dropoffs = await get_basics ();
 
                 const { routings, call_urls, trash_points } = await get_data (dropoffs);
-
 
                 // Create an instance of the map
                 const map = new mapboxgl.Map({
@@ -77,10 +196,10 @@
                 map.scrollZoom.disable();
 
                 // Define the actions on loading
-                map.on("style.load", async () => {
+                map.on("load", async () => {
                     map.setFog({}); // Set the default atmosphere style
 
-                    /*// Create a source for the trash dropoffs
+                    // Create a source for the trash dropoffs
                     map.addSource(`dropoffs`, {
                         type: "geojson",
                         data: dropoffs,
@@ -88,16 +207,21 @@
 
                     // Create a circle layer for each point
                     map.addLayer({
-                        id: `dropoff-circle`,
+                        id: `dropoffs`,
                         type: "circle",
                         source: `dropoffs`,
+                        layout: {
+                            "visibility": "none",
+                        },
                         paint: {
                             "circle-radius": 2,
                             "circle-color": "#000000",
                             "circle-stroke-color": "#FFFFFF",
                             "circle-stroke-width": 2,
                         },
-                    });*/
+                    });
+
+                    map_layers.dropoffs.push("dropoffs");
 
                     for (const idx in trash_points.v1) {
                         // Create a source for the trash points
@@ -108,9 +232,12 @@
 
                         // Create a circle layer for each point
                         map.addLayer({
-                            id: `trash-circle-${idx}`,
+                            id: `trash-${idx}`,
                             type: "circle",
                             source: `trash-${idx}`,
+                            layout: {
+                                "visibility": "visible",
+                            },
                             paint: {
                                 "circle-radius": 4,
                                 "circle-color": colorlines[idx],
@@ -118,6 +245,8 @@
                                 "circle-stroke-width": 2,
                             },
                         });
+
+                        map_layers.trash.push(idx);
                     }
 
                     // Make a route soft counter
@@ -157,6 +286,83 @@
                                 routes += 1;
                             }*/
                         }
+                    }
+                });
+
+                // Behaviour when map inactive.
+                map.on('idle', async () => {
+                    // Get each toggleable layer
+                    let mapgl_layers = [];
+
+                    // If all sources are not added to the map, abort
+                    for (const this_type of Object.keys(map_layers)) {
+                        for (const this_source of map_layers[this_type]) {
+                            let source_name = this_type;
+
+                            if (this_type != "dropoffs") {
+                                source_name += `-${this_source}`
+                            }
+
+                            if (!map.getLayer(source_name)) return;
+                            mapgl_layers.push(source_name);
+                        }
+                    }
+
+                    // Set up the corresponding toggle button for each layer
+                    for (const id of mapgl_layers) {
+                        // Skip layers that already have a button set up
+                        if (document.getElementById(id)) {
+                            continue;
+                        }
+
+                        // Create a link
+                        const link = document.createElement("a");
+                        link.id = id;
+                        link.href = "#";
+                        link.textContent = id;
+                        link.className = id == "dropoffs" ? "" : "active";
+
+                        // Show or hide layer when the toggle is clicked.
+                        link.onclick = function (e) {
+                            const clicked_layer = this.textContent;
+                            e.preventDefault();
+                            e.stopPropagation();
+
+                            const visibility = map.getLayoutProperty(
+                                clicked_layer,
+                                'visibility'
+                            );
+
+                            // Toggle layer visibility by changing the layout object's visibility property.
+                            if (visibility === 'visible') {
+                                map.setLayoutProperty(clicked_layer, 'visibility', 'none');
+                                if (clicked_layer.indexOf("route-") != -1) {
+                                    let shadow_layer = clicked_layer.replace("route", "route-shadow");
+                                    map.setLayoutProperty(shadow_layer, 'visibility', 'none');
+                                }
+                                this.className = '';
+                            } else {
+                                this.className = 'active';
+                                map.setLayoutProperty(
+                                    clicked_layer,
+                                    'visibility',
+                                    'visible'
+                                );
+                                if (clicked_layer.indexOf("route-") != -1) {
+                                    let shadow_layer = clicked_layer.replace("route", "route-shadow");
+                                    map.setLayoutProperty(
+                                        shadow_layer,
+                                        'visibility',
+                                        'visible'
+                                    );
+                                }
+                            }
+                        };
+
+                        // Put it in the right place
+                        const destination = `all_${id.split("-")[0]}`;
+                        const layers = document.querySelector(`#map_nav .all_layers .${destination}`);
+                        layers.appendChild(link);
                     }
                 });
             }
@@ -264,12 +470,13 @@
                 // Add the route style to the source
                 map.addLayer(
                     {
-                        id: `routeline-border-${number}`,
+                        id: `route-shadow-${number}`,
                         type: "line",
                         source: `route-${number}`,
                         layout: {
                             "line-join": "round",
                             "line-cap": "round",
+                            "visibility": "visible",
                         },
                         paint: {
                             "line-color": "#000000",
@@ -281,12 +488,13 @@
                 // Add the route style to the source
                 map.addLayer(
                     {
-                        id: `routeline-active-${number}`,
+                        id: `route-${number}`,
                         type: "line",
                         source: `route-${number}`,
                         layout: {
                             "line-join": "round",
                             "line-cap": "round",
+                            "visibility": "visible",
                         },
                         paint: {
                             "line-color": colorlines[number],
@@ -294,9 +502,63 @@
                         },
                     },
                 );
-                
+
+                // map_layers.routes.push(number);
+                await make_link(`route-${number}`);
+
                 // Add the route itself to the source
                 map.getSource(`route-${number}`).setData(routeGeoJSON);
+
+                async function make_link(id) {
+                    // Create a link
+                    const link = document.createElement("a");
+                    link.id = id;
+                    link.href = "#";
+                    link.textContent = id;
+                    link.className = id == "dropoffs" ? "" : "active";
+
+                    // Show or hide layer when the toggle is clicked.
+                    link.onclick = function (e) {
+                        const clicked_layer = this.textContent;
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        const visibility = map.getLayoutProperty(
+                            clicked_layer,
+                            'visibility'
+                        );
+
+                        // Toggle layer visibility by changing the layout object's visibility property.
+                        if (visibility === 'visible') {
+                            map.setLayoutProperty(clicked_layer, 'visibility', 'none');
+                            if (clicked_layer.indexOf("route-") != -1) {
+                                let shadow_layer = clicked_layer.replace("route", "route-shadow");
+                                map.setLayoutProperty(shadow_layer, 'visibility', 'none');
+                            }
+                            this.className = '';
+                        } else {
+                            this.className = 'active';
+                            map.setLayoutProperty(
+                                clicked_layer,
+                                'visibility',
+                                'visible'
+                            );
+                            if (clicked_layer.indexOf("route-") != -1) {
+                                let shadow_layer = clicked_layer.replace("route", "route-shadow");
+                                map.setLayoutProperty(
+                                    shadow_layer,
+                                    'visibility',
+                                    'visible'
+                                );
+                            }
+                        }
+                    };
+
+                    // Put it in the right place
+                    const destination = `all_${id.split("-")[0]}`;
+                    const layers = document.querySelector(`#map_nav .all_layers .${destination}`);
+                    layers.appendChild(link);
+                }
             }
         </script>
     </body>

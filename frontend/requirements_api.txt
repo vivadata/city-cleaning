@@ -2,4 +2,5 @@ flask[async]
 flask-cors
 google-api-python-client
 google-cloud-bigquery
+openaq
 python-dotenv

@@ -8,12 +8,15 @@ from flask import Flask
 from flask_cors import CORS
 from google.cloud import bigquery
 from google.oauth2 import service_account
+from openaq import OpenAQ
+import requests
 
 # Load the env
 load_dotenv()
 
 # We need the config to connect
 gc_config = ast.literal_eval(os.getenv("GCLOUD_CONFIG"))
+oaq_config = os.getenv("OPENAQ_DEFAULT_TOKEN")
 
 # And to know what we connect to
 gc_project = os.getenv("GCLOUD_PROJECT")
@@ -94,19 +97,19 @@ async def get_pickup(year, month):
 
 # Get all the dropoff points
 @api.route("/dropoff/all", methods=["GET"])
-def get_all_dropoff():
+async def get_all_dropoff():
     output = []
 
     for table in gc_project_tables:
         if table != "dmr":
-            dropoffs = get_dropoff(table)
+            dropoffs = await get_dropoff(table)
             output.extend(dropoffs)
 
     return output
 
 # Get the dropoff points for one type of trash
 @api.route("/dropoff/<type>", methods=["GET"])
-def get_dropoff(type):
+async def get_dropoff(type):
     # This is the table
     table_id = f"{gc_project}.{gc_project_datasets[0]}.{type}"
 
@@ -157,6 +160,118 @@ def get_dropoff(type):
             "latitude": row["latitude"],
         })
 
+    return output
+
+# Get the air quality
+@api.route("/air_quality", methods=["GET"])
+async def get_air_quality():
+    # First get the data from the api
+    output = []
+    client = OpenAQ(api_key=oaq_config)
+    loc_response = client.locations.list(
+        coordinates=[48.8534, 2.3488],
+        radius=4000,
+        limit=1000
+    )
+
+    # And extract the specifics of the locations
+    loc_data = loc_response.dict()
+    locations = loc_data["results"]
+
+    # And from the locations the sensors
+    sensors = list()
+    for loc in locations:
+        if loc["sensors"]:
+            sensors.extend(loc["sensors"])
+
+    # Useful columns
+    columns = [
+        "latest.value",
+        "parameter.units",
+        "parameter.displayName",
+        "datetime_last.local",
+        "latest.coordinates.latitude",
+        "latest.coordinates.longitude",
+    ]
+
+    # Then get the data from the sensors
+    for sns in sensors:
+        sensor_response = client.sensors.get(sns['id'])
+        sensor_data = sensor_response.dict()
+
+        for data in sensor_data['results']:
+            is_data = dict()
+            is_full = True
+
+            # Only the columns that interest us
+            for key in columns:
+                # Extract their indentation
+                path = key.split(".")
+                new_key = "_".join(path)
+
+                # And their value
+                value = data
+
+                # If it exists
+                for indent in path:
+                    if value:
+                        value = value[indent]
+                    
+                    else:
+                        value = None
+
+                # And if it is filled
+                if not value:
+                    is_full = False
+                
+                else:
+                    is_data[new_key] = value
+            
+            if is_full:
+                output.append(is_data)
+
+    return output
+
+# Get the water quality
+@api.route("/water_quality", methods=["GET"])
+async def get_water_quality():
+    output = []
+    water_url = "https://hubeau.eaufrance.fr/api/v2/qualite_rivieres/analyse_pc"
+    options = [
+        "code_departement=75",
+        "date_debut_prelevement=2024-12-01"
+    ]
+
+    # Those are the columns that interest us
+    columns = [
+        "date_prelevement",
+        "libelle_parametre",
+        "resultat",
+        "symbole_unite",
+        "latitude", 
+        "longitude"
+    ]
+
+    # The request
+    response = requests.get(f"{water_url}?{"&".join(options)}").json()
+
+    # Add all the data to output
+    for data in response["data"]:
+        is_data = dict()
+        is_full = True
+
+        # Only the columns that interest us
+        for key in columns:
+            # And only if they are filled
+            if not data[key]:
+                is_full = False
+            
+            else:
+                is_data[key] = data[key]
+        
+        if is_full:
+            output.append(is_data)
+    
     return output
 
 async def main():
