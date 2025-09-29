@@ -325,6 +325,7 @@
                         // Show or hide layer when the toggle is clicked.
                         link.onclick = function (e) {
                             const clicked_layer = this.id;
+                            console.log(routings.v1[parseInt(route_params[route_params.length - 1])]);
                             e.preventDefault();
                             e.stopPropagation();
 
@@ -523,7 +524,7 @@
                     },
                 );
 
-                await make_link({ map, id: `route-${number}` });
+                await make_link({ map, legs: response.trips[0].legs, id: `route-${number}` });
 
                 // Show the related trash points
                 let trash_layer = `trash-${number}`;
@@ -549,7 +550,7 @@
             }
 
             async function make_link(params) {
-                const { map, id } = params;
+                const { map, legs, id } = params;
 
                 const route_params = id.split("-");
 
@@ -568,6 +569,7 @@
                 // Show or hide layer when the toggle is clicked.
                 link.onclick = function (e) {
                     const clicked_layer = this.id;
+                    console.log(legs);
                     e.preventDefault();
                     e.stopPropagation();
 
