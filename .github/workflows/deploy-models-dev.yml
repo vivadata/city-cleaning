@@ -1,0 +1,36 @@
+name: 'Deploy dbt files on bucket - dev'
+
+on:
+  push:
+    branches:
+      - main
+      - feat/dags-sync
+    # paths:
+      # - "dbt-dmr/models/**"
+
+jobs:
+  dbt-models:
+    name: Dbt - profile and models
+    runs-on: ubuntu-latest
+    environment: dev
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Auth
+        uses: 'google-github-actions/auth@v3'
+        with:
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS}}
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v3'
+
+      - name: Deploy
+        run: |
+          mkdir -p tmp/dags tmp/data
+          cp dbt-dmr/dbt_project.yml tmp/dags/
+          gsutil -m rsync -R tmp/dags/ gs://city-cleaning-airflow-dev/dags/
+          gsutil -m rsync -R dbt-dmr/models/ gs://city-cleaning-airflow-dev/dags/models/
+
+
