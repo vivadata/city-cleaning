@@ -92,8 +92,9 @@
                     }
 
                     a {
-                        color: navy;
-                        padding-left: 5px;
+                        flex-grow: 1;
+                        text-shadow: 0px 0px 1px black;
+                        text-align: center;
                         opacity: 0.5;
 
                         &.active {
@@ -129,28 +130,20 @@
             <div class="all_layers">
                 <button 
                     typ="button" 
-                    class="is_open active" 
+                    class="is_open" 
                     onclick="legendState(this, 'all_dropoffs')"
                 >
                     Dropoff Points
                 </button>
-                <div class="all_dropoffs"></div>
+                <div class="all_dropoffs hidden"></div>
                 <button 
                     typ="button" 
                     class="is_open active" 
                     onclick="legendState(this, 'all_trash')"
                 >
-                    Trash Locations
+                    Trash Reports & Pickup Routes
                 </button>
                 <div class="all_trash"></div>
-                <button 
-                    typ="button" 
-                    class="is_open active" 
-                    onclick="legendState(this, 'all_route')"
-                >
-                    Pickup Routes
-                </button>
-                <div class="all_route"></div>
             </div>
         </nav>
         <div id="map">
@@ -236,7 +229,7 @@
                             type: "circle",
                             source: `trash-${idx}`,
                             layout: {
-                                "visibility": "visible",
+                                "visibility": "none",
                             },
                             paint: {
                                 "circle-radius": 4,
@@ -315,16 +308,23 @@
                             continue;
                         }
 
+                        const route_params = id.split("-");
+
                         // Create a link
                         const link = document.createElement("a");
                         link.id = id;
                         link.href = "#";
-                        link.textContent = id;
-                        link.className = id == "dropoffs" ? "" : "active";
+                        link.textContent = 
+                            route_params[0].substring(0, 1).toUpperCase() +
+                            route_params[0].substring(1).toLowerCase();
+                        link.style.color = !id.includes("dropoffs") 
+                            ? colorlines[parseInt(route_params[route_params.length - 1])] 
+                            : "navy";
+                        link.className = !id.includes("route") ? "" : "active";
 
                         // Show or hide layer when the toggle is clicked.
                         link.onclick = function (e) {
-                            const clicked_layer = this.textContent;
+                            const clicked_layer = this.id;
                             e.preventDefault();
                             e.stopPropagation();
 
@@ -359,10 +359,30 @@
                             }
                         };
 
-                        // Put it in the right place
-                        const destination = `all_${id.split("-")[0]}`;
+                        // The parent of the link
+                        const destination = `all_${route_params[0]}`;
                         const layers = document.querySelector(`#map_nav .all_layers .${destination}`);
-                        layers.appendChild(link);
+
+                        // If it is trash link it up for route
+                        if (!id.includes("dropoffs")) {
+                            // Skip layers that already have a button set up
+                            if (!document.getElementById(`container-${route_params[route_params.length - 1]}`)) {
+                                const container = document.createElement("div");
+                                container.id = `container-${route_params[route_params.length - 1]}`
+                                container.style.display = "flex";
+                                layers.appendChild(container);
+                            }
+
+                            const new_id = `container-${route_params[route_params.length - 1]}`;
+                            const new_layer = 
+                                document
+                                    .querySelector(`#map_nav .all_layers .${destination} #${new_id}`);
+                            new_layer.appendChild(link);
+                        
+                        // Else put it in the right place
+                        } else {
+                            layers.appendChild(link);
+                        }
                     }
                 });
             }
@@ -503,60 +523,112 @@
                     },
                 );
 
-                // map_layers.routes.push(number);
-                await make_link(`route-${number}`);
+                await make_link({ map, id: `route-${number}` });
+
+                // Show the related trash points
+                let trash_layer = `trash-${number}`;
+
+                let visibility = map.getLayoutProperty(
+                    trash_layer,
+                    'visibility'
+                );
+
+                if (visibility != "visible") {
+                    if (document.getElementById(trash_layer)) {
+                        document.getElementById(trash_layer).classList = 'active';
+                        map.setLayoutProperty(
+                            trash_layer,
+                            'visibility',
+                            'visible'
+                        );
+                    }
+                }
 
                 // Add the route itself to the source
                 map.getSource(`route-${number}`).setData(routeGeoJSON);
+            }
 
-                async function make_link(id) {
-                    // Create a link
-                    const link = document.createElement("a");
-                    link.id = id;
-                    link.href = "#";
-                    link.textContent = id;
-                    link.className = id == "dropoffs" ? "" : "active";
+            async function make_link(params) {
+                const { map, id } = params;
 
-                    // Show or hide layer when the toggle is clicked.
-                    link.onclick = function (e) {
-                        const clicked_layer = this.textContent;
-                        e.preventDefault();
-                        e.stopPropagation();
+                const route_params = id.split("-");
 
-                        const visibility = map.getLayoutProperty(
+                // Create a link
+                const link = document.createElement("a");
+                link.id = id;
+                link.href = "#";
+                link.textContent = 
+                    route_params[0].substring(0, 1).toUpperCase() +
+                    route_params[0].substring(1).toLowerCase();
+                link.style.color = !id.includes("dropoffs") 
+                    ? colorlines[parseInt(route_params[route_params.length - 1])] 
+                    : "navy";
+                link.className = id == "dropoffs" ? "" : "active";
+
+                // Show or hide layer when the toggle is clicked.
+                link.onclick = function (e) {
+                    const clicked_layer = this.id;
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const visibility = map.getLayoutProperty(
+                        clicked_layer,
+                        'visibility'
+                    );
+
+                    // Toggle layer visibility by changing the layout object's visibility property.
+                    if (visibility === 'visible') {
+                        map.setLayoutProperty(clicked_layer, 'visibility', 'none');
+                        if (clicked_layer.indexOf("route-") != -1) {
+                            let shadow_layer = clicked_layer.replace("route", "route-shadow");
+                            map.setLayoutProperty(shadow_layer, 'visibility', 'none');
+                        }
+                        this.className = '';
+                    } else {
+                        this.className = 'active';
+                        map.setLayoutProperty(
                             clicked_layer,
-                            'visibility'
+                            'visibility',
+                            'visible'
                         );
-
-                        // Toggle layer visibility by changing the layout object's visibility property.
-                        if (visibility === 'visible') {
-                            map.setLayoutProperty(clicked_layer, 'visibility', 'none');
-                            if (clicked_layer.indexOf("route-") != -1) {
-                                let shadow_layer = clicked_layer.replace("route", "route-shadow");
-                                map.setLayoutProperty(shadow_layer, 'visibility', 'none');
-                            }
-                            this.className = '';
-                        } else {
-                            this.className = 'active';
+                        if (clicked_layer.indexOf("route-") != -1) {
+                            let shadow_layer = clicked_layer.replace("route", "route-shadow");
                             map.setLayoutProperty(
-                                clicked_layer,
+                                shadow_layer,
                                 'visibility',
                                 'visible'
                             );
-                            if (clicked_layer.indexOf("route-") != -1) {
-                                let shadow_layer = clicked_layer.replace("route", "route-shadow");
-                                map.setLayoutProperty(
-                                    shadow_layer,
-                                    'visibility',
-                                    'visible'
-                                );
-                            }
                         }
-                    };
+                    }
+                };
 
-                    // Put it in the right place
-                    const destination = `all_${id.split("-")[0]}`;
-                    const layers = document.querySelector(`#map_nav .all_layers .${destination}`);
+                // Put it in the right place
+                // const destination = `all_${route_params[0]}`;
+                // const layers = document.querySelector(`#map_nav .all_layers .${destination}`);
+                // layers.appendChild(link);
+
+                // The parent of the link
+                const destination = `all_${route_params[0] == "route" ? "trash" : route_params[0]}`;
+                const layers = document.querySelector(`#map_nav .all_layers .${destination}`);
+
+                // If it is trash link it up for route
+                if (!id.includes("dropoffs")) {
+                    // Skip layers that already have a button set up
+                    if (!document.getElementById(`container-${route_params[route_params.length - 1]}`)) {
+                        const container = document.createElement("div");
+                        container.id = `container-${route_params[route_params.length - 1]}`
+                        container.style.display = "flex";
+                        layers.appendChild(container);
+                    }
+
+                    const new_id = `container-${route_params[route_params.length - 1]}`;
+                    const new_layer = 
+                        document
+                            .querySelector(`#map_nav .all_layers .${destination} #${new_id}`);
+                    new_layer.appendChild(link);
+                
+                // Else put it in the right place
+                } else {
                     layers.appendChild(link);
                 }
             }
