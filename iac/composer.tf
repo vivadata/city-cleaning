@@ -33,11 +33,11 @@ resource "google_composer_environment" "airflow_environment" {
     software_config {
       image_version = "composer-3-airflow-2.10.5-build.14"
       env_variables = {
-        - "DBT_PROFILES_DIR" = "/home/airflow/gcs/data/profiles"
-        - "DBT_PROJECT_DIR"  = "/home/airflow/gcs/dags"
+        DBT_PROFILES_DIR = "/home/airflow/gcs/data/profiles"
+        DBT_PROJECT_DIR  = "/home/airflow/gcs/dags"
       }
       pypi_packages = {
-        - "dbt-bigquery" = ""
+        "dbt-bigquery" = ""
       }
     }
 
